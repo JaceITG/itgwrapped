@@ -2,6 +2,7 @@ import React from 'react';
 import './xmlParser.css';
 import stats from '../assets/Stats.xml';
 import xmlJs from 'xml-js';
+import JSONPretty from 'react-json-pretty';
 
 
 class XmlParser extends React.Component {
@@ -35,7 +36,7 @@ class XmlParser extends React.Component {
         return (
             
             <div>
-                <div>{JSON.stringify(data)}</div>
+                <JSONPretty id="json-pretty" data={data}></JSONPretty>
             </div>
         );
     }
