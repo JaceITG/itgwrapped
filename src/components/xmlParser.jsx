@@ -10,20 +10,29 @@ class XmlParser extends React.Component {
         super(props);
         this.state = {
             data: [],
+            profile: {},
         }
 
-        this.parse(props.stats);
+        this.readXML(props.stats);
     }
 
+    async parseStats(obj){
+        //Collect profile username
+        let profile = { username: obj["Stats"]["GeneralData"]["DisplayName"]["_text"] };
 
-    async parse(path) {
+        this.setState({ profile: profile });
+    }
+
+    async readXML(path) {
         await fetch(path)
             .then((response) => response.text())
             .then((xmlText) => {
                 console.log(path);
                 const jsonData = xmlJs.xml2json(xmlText, { compact: true, spaces: 4 });
-                console.log("Done parsing");
+                console.log("Done reading");
                 this.setState({ data: jsonData })
+
+                this.parseStats(JSON.parse(jsonData));
             })
             .catch((error) => {
                 console.error('Error fetching XML data:', error);
@@ -32,10 +41,11 @@ class XmlParser extends React.Component {
     }
 
     render() {
-        const { data } = this.state;
+        const { data, profile } = this.state;
         return (
             
             <div>
+                <div>Player: {profile.username}</div>
                 <JSONPretty id="json-pretty" data={data}></JSONPretty>
             </div>
         );
