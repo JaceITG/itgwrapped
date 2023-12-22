@@ -30,8 +30,6 @@ class XmlParser extends React.Component {
         let filteredScores = scores.flatMap((song) => {
             let songName = song["_attributes"]["Dir"];
 
-            console.log("Processing song: " + songName);
-
             let songScores = [];
 
             // Pack Song Steps field into array in case it is an object (songs with 1 difficulty)
