@@ -3,7 +3,7 @@ import './xmlParser.css';
 import stats from '../assets/Stats.xml';
 import xmlJs from 'xml-js';
 import JSONPretty from 'react-json-pretty';
-
+import newProfile from './wrapCalc.jsx';
 
 class XmlParser extends React.Component {
     constructor(props) {
@@ -18,10 +18,7 @@ class XmlParser extends React.Component {
 
     async parseStats(obj, year=2023){
         // Collect profile username
-        let profile = {
-            username: obj["Stats"]["GeneralData"]["DisplayName"]["_text"],
-            scores: [],
-        };
+        let profile = newProfile( obj["Stats"]["GeneralData"]["DisplayName"]["_text"] );
 
         // Get score data and filter to year
         let scores = obj["Stats"]["SongScores"]["Song"];
@@ -74,6 +71,8 @@ class XmlParser extends React.Component {
                     // Preserve song name/diff for standalone score object
                     score.Song = { path: songName, difficulty: diffName }
 
+
+
                     songScores.push(score);
                 }
             }
@@ -91,6 +90,9 @@ class XmlParser extends React.Component {
             .then((response) => response.text())
             .then((xmlText) => {
                 console.log(path);
+
+                // FIXME: parse straight to JS object once we no longer
+                //        need the JSON for debug/validation
                 const jsonData = xmlJs.xml2json(xmlText, { compact: true, spaces: 4 });
                 console.log("Done reading");
                 this.setState({ data: jsonData })
