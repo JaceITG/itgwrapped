@@ -3,7 +3,7 @@ import './xmlParser.css';
 import stats from '../assets/Stats.xml';
 import xmlJs from 'xml-js';
 import JSONPretty from 'react-json-pretty';
-import newProfile from './wrapCalc.jsx';
+import Profile from './wrapCalc.jsx';
 
 class XmlParser extends React.Component {
     constructor(props) {
@@ -18,7 +18,7 @@ class XmlParser extends React.Component {
 
     async parseStats(obj, year=2023){
         // Collect profile username
-        let profile = newProfile( obj["Stats"]["GeneralData"]["DisplayName"]["_text"] );
+        let profile = new Profile( obj["Stats"]["GeneralData"]["DisplayName"]["_text"] );
 
         // Get score data and filter to year
         let scores = obj["Stats"]["SongScores"]["Song"];

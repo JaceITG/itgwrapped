@@ -1,17 +1,22 @@
 
 
-function newProfile(name) {
-    var profile = { 
-        username: name,
-        scores: [],             // TEMP: scores array to retain full list for debug until data interpretation is done real-time
-        numScores: 0,
-        numUnqDaysPlayed: 0,
-        numQuads: {},           // int quads, Array score objects (for viewable list of songs quadded? alternatively only retain hardest quad)
-        highestClear: null,     // Score obj of highest clear
-        bestScore: {},          // Heuristically chosen "best score" based on EX score, grade, difficulty
+class Profile {
+    constructor(name) {
+        self.username = name;
+        self.scores = [];             // TEMP: scores array to retain full list for debug until data interpretation is done real-time
+        self.numScores = 0;
+        self.numUnqDaysPlayed = 0;
+        self.numQuads = {};           // int quads, Array score objects (for viewable list of songs quadded? alternatively only retain hardest quad)
+        self.highestClear = null;     // Score obj of highest clear
+        self.bestScore = {};          // Heuristically chosen "best score" based on EX score, grade, difficulty
     };
 
-    return profile;
+    
+    processScore(score) {
+        
+        return;
+    }
 }
 
-export default newProfile;
+
+export default Profile;
