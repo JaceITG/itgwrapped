@@ -3,7 +3,7 @@ import './xmlParser.css';
 import stats from '../assets/Stats.xml';
 import xmlJs from 'xml-js';
 import JSONPretty from 'react-json-pretty';
-import Profile from './wrapCalc.jsx';
+import { newProfile, processScore, getBiggestDay } from './wrapCalc.jsx';
 
 class XmlParser extends React.Component {
     constructor(props) {
@@ -18,13 +18,13 @@ class XmlParser extends React.Component {
 
     async parseStats(obj, year=2023){
         // Collect profile username
-        let profile = new Profile( obj["Stats"]["GeneralData"]["DisplayName"]["_text"] );
+        let profile = newProfile( obj["Stats"]["GeneralData"]["DisplayName"]["_text"] );
 
         // Get score data and filter to year
         let scores = obj["Stats"]["SongScores"]["Song"];
 
         // Filter through difficulties of each song, selecting only scores from correct year
-        let filteredScores = scores.flatMap((song) => {
+        scores.map((song) => {
             let songName = song["_attributes"]["Dir"];
 
             let songScores = [];
@@ -71,16 +71,11 @@ class XmlParser extends React.Component {
                     // Preserve song name/diff for standalone score object
                     score.Song = { path: songName, difficulty: diffName }
 
-
-
                     songScores.push(score);
+                    processScore(profile, score);
                 }
             }
-
-            return songScores;
         });
-
-        profile.scores = filteredScores;
 
         this.setState({ profile: profile });
     }
@@ -111,6 +106,7 @@ class XmlParser extends React.Component {
             
             <div>
                 <div>Player: {profile.username}</div>
+                <div>NumScores: {profile.numScores}</div>
                 <div>Scores:</div>
                 <JSONPretty id="json-pretty" data={profile.scores}></JSONPretty>
             </div>
