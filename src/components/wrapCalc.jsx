@@ -30,6 +30,7 @@ function processScore(profile, score) {
             profile.grades[grade] ??= [];
             profile.grades[grade].push( score );
         }
+        return profile;
     };
 
 function getBiggestDay(profile) {

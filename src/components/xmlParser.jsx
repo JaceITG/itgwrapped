@@ -72,7 +72,7 @@ class XmlParser extends React.Component {
                     score.Song = { path: songName, difficulty: diffName }
 
                     songScores.push(score);
-                    processScore(profile, score);
+                    profile = processScore(profile, score);
                 }
             }
         });
@@ -102,11 +102,13 @@ class XmlParser extends React.Component {
 
     render() {
         const { data, profile } = this.state;
+        //const biggestDay = Object.keys(profile.daysPlayed).reduce((a, b) => obj[a] > obj[b] ? a : b);
         return (
             
             <div>
                 <div>Player: {profile.username}</div>
                 <div>NumScores: {profile.numScores}</div>
+                <JSONPretty id="json-pretty" data={profile.grades}></JSONPretty>
                 <div>Scores:</div>
                 <JSONPretty id="json-pretty" data={profile.scores}></JSONPretty>
             </div>
