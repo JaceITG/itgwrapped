@@ -25,7 +25,7 @@ function processScore(profile, score) {
         profile.daysPlayed[ score["DateTime"] ]++;
 
         // Save score in grades if above threshold
-        const grade = parseInt(score["Grade"]);
+        const grade = parseInt(score["Grade"]["_text"].substring(4, 6));
         if ( grade <= gradeThreshold ) {
             profile.grades[grade] ??= [];
             profile.grades[grade].push( score );
