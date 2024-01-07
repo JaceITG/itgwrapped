@@ -22,8 +22,10 @@ function processScore(profile, score) {
         profile.numScores++;
 
         // Set default and inc scores set on this day
-        profile.daysPlayed[ score["DateTime"] ] ??= 0;
-        profile.daysPlayed[ score["DateTime"] ]++;
+        let date = score["DateTime"]["_text"]
+        date = date.split(" ")[0]
+        profile.daysPlayed[ date ] ??= 0;
+        profile.daysPlayed[ date ]++;
 
         // Metrics
         // As long as metric calc are outside of the Grade Threshold guard
@@ -49,7 +51,10 @@ function processScore(profile, score) {
     };
 
 function getBiggestDay(profile) {
-        max_key = Object.keys(profile.daysPlayed).reduce((a, b) => obj[a] > obj[b] ? a : b);
+        if (profile.daysPlayed === undefined){
+            return null;
+        }
+        let max_key = Object.keys(profile.daysPlayed).reduce((a, b) => profile[a] > profile[b] ? a : b);
         return max_key;
 };
 
