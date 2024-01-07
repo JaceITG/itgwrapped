@@ -12,18 +12,10 @@ function App() {
   }
 
   function handleSubmit(event) {
-    console.log(file)
     event.preventDefault()
     const formData = new FormData();
     formData.append('file', file);
     formData.append('fileName', file.name);
-    const config = {
-      headers: {
-        'content-type': 'multipart/form-data',
-      },
-    };
-
-
   }
 
   return (
