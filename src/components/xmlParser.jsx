@@ -11,18 +11,12 @@ class XmlParser extends React.Component {
         this.state = {
             data: [],
             profile: {},
-
-            metrics: {},
         }
 
         this.readXML(props.stats);
     }
 
     async parseStats(obj, year=2023){
-        let metrics = {
-            numQuads: 0,
-            discoPop: 0,
-        }
 
         // Collect profile username
         let profile = newProfile( obj["Stats"]["GeneralData"]["DisplayName"]["_text"] );
@@ -78,19 +72,6 @@ class XmlParser extends React.Component {
                     // Preserve song name/diff for standalone score object
                     score.Song = { path: songName, difficulty: diffName }
 
-                    // Metrics
-                    
-                    // Count number of plays on Disco Pop
-                    // This counts non-stars too so I have to do it here lol
-                    if (score["Song"]["path"].includes("Disco Pop")) {
-                        metrics.discoPop++;
-                    }
-
-                    // Count number of quads
-                    if (parseFloat(score["PercentDP"]["_text"]) >= 1.0) {
-                        metrics.numQuads++;
-                    }
-
                     songScores.push(score);
                     console.log(score);
                     profile = processScore(profile, score);
@@ -98,7 +79,7 @@ class XmlParser extends React.Component {
             }
         });
 
-        this.setState({ profile: profile, metrics: metrics });
+        this.setState({ profile: profile });
     }
 
     async readXML(path) {
@@ -122,14 +103,14 @@ class XmlParser extends React.Component {
     }
 
     render() {
-        const { data, profile, metrics } = this.state;
+        const { data, profile } = this.state;
         //const biggestDay = Object.keys(profile.daysPlayed).reduce((a, b) => obj[a] > obj[b] ? a : b);
         return (
             
             <div>
                 <div>Player: {profile.username}</div>
-                <p>You played Disco Pop {metrics.discoPop} times!</p>
-                <p>You got {metrics.numQuads} quads!</p>
+                <p>You played Disco Pop {profile.discoPop} times!</p>
+                <p>You got {profile.numQuads} quads!</p>
                 <div>NumScores: {profile.numScores}</div>
                 <JSONPretty id="json-pretty" data={profile.grades}></JSONPretty>
                 <div>Scores:</div>
