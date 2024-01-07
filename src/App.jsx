@@ -2,9 +2,29 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import XmlParser from './components/xmlParser';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [file, setFile] = useState(0)
+
+  function handleChange(event) {
+    setFile(event.target.files[0])
+  }
+
+  function handleSubmit(event) {
+    console.log(file)
+    event.preventDefault()
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('fileName', file.name);
+    const config = {
+      headers: {
+        'content-type': 'multipart/form-data',
+      },
+    };
+
+
+  }
 
   return (
     <>
@@ -17,14 +37,19 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
+      { file === 0 ?
+        <div className="card">
+          <form onSubmit={handleSubmit}>
+          <h1>React File Upload</h1>
+          <input type="file" onChange={handleChange} />
+          <button type="submit">Upload</button>
+          </form>
+        </div>
+      :
+        <div className="container">
+          <XmlParser stats={URL.createObjectURL(file)} />
+        </div>
+      }
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
