@@ -110,7 +110,7 @@ class XmlParser extends React.Component {
             <div>
                 <div>Player: {profile.username}</div>
                 <p>You played Disco Pop {profile.discoPop} times!</p>
-                <p>You got {profile.numQuads} quads!</p>
+                {profile.numQuads > 0 && <p>You got {profile.numQuads} quad{profile.numQuads == 1 ? "" : "s"}!</p>}
                 <div>NumScores: {profile.numScores}</div>
                 <JSONPretty id="json-pretty" data={profile.grades}></JSONPretty>
                 <div>Scores:</div>
