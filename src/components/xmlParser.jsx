@@ -105,13 +105,20 @@ class XmlParser extends React.Component {
         const { data, profile } = this.state;
         const biggestDay = getBiggestDay(profile);
         return (
-            
             <div>
                 <div>Player: {profile.username}</div>
                 <p>You played Disco Pop {profile.discoPop} times!</p>
                 {profile.numQuads > 0 && <p>You got {profile.numQuads} quad{profile.numQuads == 1 ? "" : "s"}!</p>}
                 <p>NumScores: {profile.numScores}</p>
                 {profile.daysPlayed && <p>Biggest Day: {biggestDay} with {profile.daysPlayed[biggestDay]} scores set!</p>}
+                {profile.grades && 
+                <div>
+                    <p>★★★★: {profile.grades[1].length}</p>
+                    <p>★★★: {profile.grades[2].length}</p>
+                    <p>★★: {profile.grades[3].length}</p>
+                    <p>★: {profile.grades[4].length}</p>
+                </div>
+                }
                 <JSONPretty id="json-pretty" data={profile.grades}></JSONPretty>
                 <p>Scores:</p>
                 <JSONPretty id="json-pretty" data={profile.scores}></JSONPretty>
