@@ -8,6 +8,7 @@ function newProfile(name) {
         scores: [],             // TEMP: scores array to retain full list for debug until data interpretation is done real-time
         numScores: 0,
         daysPlayed: {},         // number of scores set on each unique day of year
+        biggestDay: null,
         grades: {},             // GradeTier, Array score objects (for viewable list of songs quadded? alternatively only retain hardest quad)
         bestScore: {},          // Heuristically chosen "best score" based on EX score, grade, difficulty
         numQuads: 0,
@@ -54,7 +55,8 @@ function getBiggestDay(profile) {
         if (profile.daysPlayed === undefined){
             return null;
         }
-        let max_key = Object.keys(profile.daysPlayed).reduce((a, b) => profile[a] > profile[b] ? a : b);
+        let max_key = Object.keys(profile.daysPlayed).reduce((a, b) => profile.daysPlayed[a] > profile.daysPlayed[b] ? a : b);
+        profile.biggestDay = max_key;
         return max_key;
 };
 
