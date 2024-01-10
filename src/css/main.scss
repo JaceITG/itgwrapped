@@ -1,0 +1,12 @@
+// stealing cering's stuff from cardigan like a boss
+
+@use './reset';
+@use './color.scss' as color;
+@use './fonts.scss' as font;
+
+html {
+	scroll-behavior: smooth;
+	background-color: color.$dark;
+	color: color.$lite;
+	@include font.real(1em);
+}

@@ -1,0 +1,25 @@
+@use './color.scss' as color;
+
+@mixin load-font($name, $file, $w: normal, $st: normal) {
+	@font-face {
+		font-family: $name;
+		font-style: $st;
+		font-weight: $w;
+		src: url("../fonts/" + $file + ".woff");
+		font-display: swap;
+	}
+}
+
+@include load-font("Real", "real", 400);
+@include load-font("Real", "real-light", 300);
+@include load-font("Real", "real-medium", 500);
+@include load-font("Real", "real-bold", 600);
+@include load-font("Real", "real-black", 700);
+
+@mixin real($size, $color: color.$lite, $weight: 300) {
+	font: $size "Real", "Inter", system-ui, "Avenir", "Helvetica", "Arial", sans-serif;
+	color: $color;
+	font-weight: $weight;
+	line-height: 1.5;
+	letter-spacing: 1px;
+}
