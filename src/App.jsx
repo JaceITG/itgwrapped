@@ -19,14 +19,20 @@ function App() {
 
   return (
     <>
-      { file === 0 ?
-        <div className="card">
+      {/* todo: defo some sort of async thing so that we load the results page only after all stats are processed */}
+      {file === 0 ?
+        <div className="title-screen">
+          <div className="title-screen-text-wrapper">
+            <p className="title-screen-text-a">ITG</p>
+            <p className="title-screen-text-b">Wrapped</p>
+            <p className="title-screen-text-info">Import a Stats.xml here!</p>
+          </div>
           <form onSubmit={handleSubmit}>
-          <input type="file" onChange={handleChange} />
-          <button type="submit">Upload</button>
+            <input type="file" onChange={handleChange} />
+            <button type="submit">Upload</button>
           </form>
         </div>
-      :
+        :
         <div className="container">
           <XmlParser stats={URL.createObjectURL(file)} />
         </div>
