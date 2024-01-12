@@ -1,21 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useCallback } from 'react'
 import XmlParser from './components/xmlParser';
+import Dropzone from 'react-dropzone';
 
 function App() {
-  const [file, setFile] = useState(0)
+  const [file, setFile] = useState(0);
 
-  function handleChange(event) {
-    setFile(event.target.files[0])
-  }
+    //Read dropped file as Data URL
+    const handleChange = useCallback((acceptedFiles) => {
+      acceptedFiles.forEach((file) => {
+        const reader = new FileReader()
 
-  function handleSubmit(event) {
-    event.preventDefault()
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('fileName', file.name);
-  }
+        reader.onabort = () => console.log('file reading was aborted');
+        reader.onerror = () => console.log('file reading has failed');
+        reader.onload = () => {
+          const dataUrl = reader.result
+          setFile(dataUrl);
+        }
+        reader.readAsDataURL(file);
+      })
+    });
 
   return (
     <>
@@ -25,16 +28,21 @@ function App() {
           <div className="title-screen-text-wrapper">
             <p className="title-screen-text-a">ITG</p>
             <p className="title-screen-text-b">Wrapped</p>
-            <p className="title-screen-text-info">Import a Stats.xml here!</p>
           </div>
-          <form onSubmit={handleSubmit}>
-            <input type="file" onChange={handleChange} />
-            <button type="submit">Upload</button>
-          </form>
+          <Dropzone  onDrop={acceptedFiles => handleChange(acceptedFiles)}>
+            {({ getRootProps, getInputProps }) => (
+              <section>
+                <div className="title-screen-dropzone" {...getRootProps()}>
+                  <input {...getInputProps()} />
+                  <p className="title-screen-text-info">Import a Stats.xml here!</p>
+                </div>
+              </section>
+            )}
+          </Dropzone>
         </div>
         :
         <div className="container">
-          <XmlParser stats={URL.createObjectURL(file)} />
+          <XmlParser stats={file} />
         </div>
       }
     </>

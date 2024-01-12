@@ -48,6 +48,18 @@ html {
 		&-info {
 			font-weight: 400;
 		}
+
+	}
+
+	&-dropzone {
+		cursor: default;
+		border: 1px dashed color.$dark2;
+		border-radius: 10px;
+		padding: 40px 20px;
+	}
+
+	&-dropzone:hover {
+		border-color: color.$lite;
 	}
 
 
