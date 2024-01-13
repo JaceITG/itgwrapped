@@ -9,7 +9,6 @@ class XmlParser extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: [],
             profile: undefined,
         }
 
@@ -85,15 +84,12 @@ class XmlParser extends React.Component {
         await fetch(path)
             .then((response) => response.text())
             .then((xmlText) => {
-                console.log(path);
-
                 // FIXME: parse straight to JS object once we no longer
                 //        need the JSON for debug/validation
-                const jsonData = xmlJs.xml2json(xmlText, { compact: true, spaces: 4 });
+                const dataObj = xmlJs.xml2js(xmlText, { compact: true, spaces: 4 });
                 console.log("Done reading");
-                this.setState({ data: jsonData })
 
-                this.parseStats(JSON.parse(jsonData));
+                this.parseStats(dataObj);
             })
             .catch((error) => {
                 console.error('Error fetching XML data:', error);

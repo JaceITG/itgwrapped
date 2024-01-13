@@ -5,7 +5,6 @@ const gradeThreshold = 4;    // Select scores with 1 Star grade or better
 function newProfile(name) {
     let profile = {
         username: name,
-        scores: [],             // TEMP: scores array to retain full list for debug until data interpretation is done real-time
         numScores: 0,
         daysPlayed: {},         // Number of scores set on each unique day of year
         packPlays: {},          // Number of scores set by pack
