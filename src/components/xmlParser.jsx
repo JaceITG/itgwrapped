@@ -27,8 +27,6 @@ class XmlParser extends React.Component {
         scores.map((song) => {
             let songName = song["_attributes"]["Dir"];
 
-            let songScores = [];
-
             // Pack Song Steps field into array in case it is an object (songs with 1 difficulty)
             let diffArray = song["Steps"];
             if (Array.isArray(diffArray)) {
@@ -71,7 +69,6 @@ class XmlParser extends React.Component {
                     // Preserve song name/diff for standalone score object
                     score.Song = { path: songName, difficulty: diffName }
 
-                    songScores.push(score);
                     profile = processScore(profile, score);
                 }
             }
@@ -133,8 +130,6 @@ class XmlParser extends React.Component {
                     <p>★: {("4" in profile.grades) && profile.grades["4"].length || 0}</p>
                 </div>
                 <JSONPretty id="json-pretty" data={profile.grades}></JSONPretty>
-                <p>Scores:</p>
-                <JSONPretty id="json-pretty" data={profile.scores}></JSONPretty>
             </div>
         );
     }
