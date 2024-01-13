@@ -113,7 +113,6 @@ class XmlParser extends React.Component {
         }
 
         let biggestDay = getMaxDict(profile.daysPlayed);
-        console.log(JSON.stringify(profile.packPlays));
         let mostPlayedPack = getMaxDict(profile.packPlays);
         let mostPlayedSong = getMaxDict(profile.songPlays);
         return (
@@ -128,17 +127,15 @@ class XmlParser extends React.Component {
                     <p className="metrics-left">...played Disco Pop {profile.discoPop} times!</p>
                     {profile.numQuads > 0 && <p>You got {profile.numQuads} quad{profile.numQuads == 1 ? "" : "s"}!</p>}
                 </div>
-                {profile.biggestDay && <p>Biggest Day: {biggestDay} with {profile.daysPlayed[biggestDay]} scores set!</p>}
-                {profile.mostPlayedPack && <p>Favorite Pack: {mostPlayedPack} with {profile.packPlays[mostPlayedPack]} scores set!</p>}
-                {profile.mostPlayedSong && <p>Favorite Pack: {mostPlayedSong} with {profile.songPlays[mostPlayedSong]} scores set!</p>}
-                {profile.grades &&
-                    <div>
-                        <p>★★★★: {("1" in profile.grades) && profile.grades["1"].length || 0}</p>
-                        <p>★★★: {("2" in profile.grades) && profile.grades["2"].length || 0}</p>
-                        <p>★★: {("3" in profile.grades) && profile.grades["3"].length || 0}</p>
-                        <p>★: {("4" in profile.grades) && profile.grades["4"].length || 0}</p>
-                    </div>
-                }
+                <p>Biggest Day: {biggestDay} with {profile.daysPlayed[biggestDay]} scores set!</p>
+                <p>Favorite Pack: {mostPlayedPack} with {profile.packPlays[mostPlayedPack]} scores set!</p>
+                <p>Favorite Song: {mostPlayedSong} with {profile.songPlays[mostPlayedSong]} scores set!</p>
+                <div>
+                    <p>★★★★: {("1" in profile.grades) && profile.grades["1"].length || 0}</p>
+                    <p>★★★: {("2" in profile.grades) && profile.grades["2"].length || 0}</p>
+                    <p>★★: {("3" in profile.grades) && profile.grades["3"].length || 0}</p>
+                    <p>★: {("4" in profile.grades) && profile.grades["4"].length || 0}</p>
+                </div>
                 <JSONPretty id="json-pretty" data={profile.grades}></JSONPretty>
                 <p>Scores:</p>
                 <JSONPretty id="json-pretty" data={profile.scores}></JSONPretty>
