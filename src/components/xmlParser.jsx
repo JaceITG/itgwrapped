@@ -81,8 +81,6 @@ class XmlParser extends React.Component {
         await fetch(path)
             .then((response) => response.text())
             .then((xmlText) => {
-                // FIXME: parse straight to JS object once we no longer
-                //        need the JSON for debug/validation
                 const dataObj = xmlJs.xml2js(xmlText, { compact: true, spaces: 4 });
                 console.log("Done reading");
 
