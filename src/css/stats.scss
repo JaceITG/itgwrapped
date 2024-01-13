@@ -47,3 +47,17 @@
 		align-self: flex-end;
 	}
 }
+
+.stats-list {
+	@include util.flex($dir: column, $x-align: center, $gap: 40px);
+	margin: 0 auto;
+	width: 50%;
+}
+
+li {
+	align-self: flex-start;
+}
+
+li:nth-child(even) {
+	align-self: flex-end;
+}

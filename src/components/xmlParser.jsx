@@ -125,9 +125,11 @@ class XmlParser extends React.Component {
                     <p className="metrics-left">...played Disco Pop {profile.discoPop} times!</p>
                     {profile.numQuads > 0 && <p>You got {profile.numQuads} quad{profile.numQuads == 1 ? "" : "s"}!</p>}
                 </div>
-                <p>Biggest Day: {biggestDay} with {profile.daysPlayed[biggestDay]} scores set!</p>
-                <p>Favorite Pack: {mostPlayedPack} with {profile.packPlays[mostPlayedPack]} scores set!</p>
-                <p>Favorite Song: {mostPlayedSong} with {profile.songPlays[mostPlayedSong]} scores set!</p>
+                <ul class="stats-list">
+                    <li>Biggest Day: {biggestDay} with {profile.daysPlayed[biggestDay]} scores set!</li>
+                    <li>Favorite Pack: {mostPlayedPack} with {profile.packPlays[mostPlayedPack]} scores set!</li>
+                    <li>Favorite Song: {mostPlayedSong} with {profile.songPlays[mostPlayedSong]} scores set!</li>
+                </ul>
                 <div>
                     <p>★★★★: {("1" in profile.grades) && profile.grades["1"].length || 0}</p>
                     <p>★★★: {("2" in profile.grades) && profile.grades["2"].length || 0}</p>
