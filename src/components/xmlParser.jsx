@@ -103,6 +103,13 @@ class XmlParser extends React.Component {
             );
         }
 
+        /*  Stat Features TODO:
+        *   -number of mines hit
+        *   -total notes hit
+        *   -FEC, etc count
+        *   -Score and/or date distribution graph
+        */
+
         let biggestDay = getMaxDict(profile.daysPlayed);
         let mostPlayedPack = getMaxDict(profile.packPlays);
         let mostPlayedSong = getMaxDict(profile.songPlays);
