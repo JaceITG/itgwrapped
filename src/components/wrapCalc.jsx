@@ -7,8 +7,9 @@ function newProfile(name) {
         username: name,
         scores: [],             // TEMP: scores array to retain full list for debug until data interpretation is done real-time
         numScores: 0,
-        daysPlayed: {},         // number of scores set on each unique day of year
-        biggestDay: null,
+        daysPlayed: {},         // Number of scores set on each unique day of year
+        packPlays: {},          // Number of scores set by pack
+        songPlays: {},          // Number of scores set by song
         grades: {},             // GradeTier, Array score objects (for viewable list of songs quadded? alternatively only retain hardest quad)
         bestScore: {},          // Heuristically chosen "best score" based on EX score, grade, difficulty
         numQuads: 0,
@@ -27,6 +28,20 @@ function processScore(profile, score) {
         date = date.split(" ")[0]
         profile.daysPlayed[ date ] ??= 0;
         profile.daysPlayed[ date ]++;
+
+        //Separate path/song elems and remove last
+        let songPath = score["Song"]["path"].split('/');
+        songPath.pop();
+        
+        // Set default and inc scores for song
+        let song = songPath.pop();
+        profile.songPlays[ song ] ??= 0;
+        profile.songPlays[ song ]++;
+        
+        // Set default and inc scores for pack
+        let pack = songPath.pop();
+        profile.packPlays[pack] ??= 0;
+        profile.packPlays[pack]++;
 
         // Metrics
         // As long as metric calc are outside of the Grade Threshold guard
@@ -51,15 +66,14 @@ function processScore(profile, score) {
         return profile;
     };
 
-function getBiggestDay(profile) {
-        if (profile.daysPlayed === undefined){
+function getMaxDict(dict) {
+        if (dict === undefined){
             return null;
         }
-        let max_key = Object.keys(profile.daysPlayed).reduce((a, b) => profile.daysPlayed[a] > profile.daysPlayed[b] ? a : b);
-        profile.biggestDay = max_key;
+        let max_key = Object.keys(dict).reduce((a, b) => dict[a] > dict[b] ? a : b);
         return max_key;
 };
 
 export {
-    newProfile, processScore, getBiggestDay,
+    newProfile, processScore, getMaxDict,
 }

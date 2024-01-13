@@ -3,14 +3,14 @@ import './xmlParser.css';
 import stats from '../assets/Stats.xml';
 import xmlJs from 'xml-js';
 import JSONPretty from 'react-json-pretty';
-import { newProfile, processScore, getBiggestDay } from './wrapCalc.jsx';
+import { newProfile, processScore, getMaxDict } from './wrapCalc.jsx';
 
 class XmlParser extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             data: [],
-            profile: {},
+            profile: undefined,
         }
 
         this.readXML(props.stats);
@@ -102,8 +102,20 @@ class XmlParser extends React.Component {
     }
 
     render() {
-        const { data, profile } = this.state;
-        getBiggestDay(profile);
+        const { profile } = this.state;
+
+        if (profile === undefined) {
+            return(
+                <div className="stats-wrapper">
+                    Processing scores...
+                </div>
+            );
+        }
+
+        let biggestDay = getMaxDict(profile.daysPlayed);
+        console.log(JSON.stringify(profile.packPlays));
+        let mostPlayedPack = getMaxDict(profile.packPlays);
+        let mostPlayedSong = getMaxDict(profile.songPlays);
         return (
             <div className="stats-wrapper">
                 <div className="stats-title">
@@ -116,7 +128,9 @@ class XmlParser extends React.Component {
                     <p className="metrics-left">...played Disco Pop {profile.discoPop} times!</p>
                     {profile.numQuads > 0 && <p>You got {profile.numQuads} quad{profile.numQuads == 1 ? "" : "s"}!</p>}
                 </div>
-                {profile.biggestDay && <p>Biggest Day: {profile.biggestDay} with {profile.daysPlayed[profile.biggestDay]} scores set!</p>}
+                {profile.biggestDay && <p>Biggest Day: {biggestDay} with {profile.daysPlayed[biggestDay]} scores set!</p>}
+                {profile.mostPlayedPack && <p>Favorite Pack: {mostPlayedPack} with {profile.packPlays[mostPlayedPack]} scores set!</p>}
+                {profile.mostPlayedSong && <p>Favorite Pack: {mostPlayedSong} with {profile.songPlays[mostPlayedSong]} scores set!</p>}
                 {profile.grades &&
                     <div>
                         <p>★★★★: {("1" in profile.grades) && profile.grades["1"].length || 0}</p>
