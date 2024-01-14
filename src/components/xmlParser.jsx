@@ -117,15 +117,13 @@ class XmlParser extends React.Component {
                     <p className="stats-title-a">Hello, {profile.username}</p>
                     <p className="stats-title-b">In 2023, you...</p>
                 </div>
-                <div className="metrics">
-                    <p className="metrics-left metrics-item-r">...set {profile.numScores} total scores!</p>
-                    <p className="metrics-right">...stepped on {profile.notesHit} notes</p>
-                    <p className="metrics-left">...but also on {profile.minesHit} mines...</p>
-                    <p className="metrics-right">...got {profile.grades && ("1" in profile.grades) && profile.grades["1"].length || 0} quads!</p>
-                    <p className="metrics-left">...played Disco Pop {profile.discoPop} times!</p>
-                    {profile.numQuads > 0 && <p>You got {profile.numQuads} quad{profile.numQuads == 1 ? "" : "s"}!</p>}
-                </div>
-                <ul class="stats-list">
+                <ul class="stats-list metrics">
+                    <li>...set {profile.numScores} total scores!</li>
+                    <li>...stepped on {profile.notesHit} notes</li>
+                    <li>...but also on {profile.minesHit} mines...</li>
+                    <li>...got {profile.grades && ("1" in profile.grades) && profile.grades["1"].length || 0} quads!</li>
+                    <li>...played Disco Pop {profile.discoPop} times!</li>
+                    {profile.numQuads > 0 && <li>You got {profile.numQuads} quad{profile.numQuads == 1 ? "" : "s"}!</li>}
                     <li>Biggest Day: {biggestDay} with {profile.daysPlayed[biggestDay]} scores set!</li>
                     <li>Favorite Pack: {mostPlayedPack} with {profile.packPlays[mostPlayedPack]} scores set!</li>
                     <li>Favorite Song: {mostPlayedSong} with {profile.songPlays[mostPlayedSong]} scores set!</li>
