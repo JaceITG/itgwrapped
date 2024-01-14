@@ -104,8 +104,6 @@ class XmlParser extends React.Component {
         }
 
         /*  Stat Features TODO:
-        *   -number of mines hit
-        *   -total notes hit
         *   -FEC, etc count
         *   -Score and/or date distribution graph
         */
@@ -121,6 +119,8 @@ class XmlParser extends React.Component {
                 </div>
                 <div className="metrics">
                     <p className="metrics-left metrics-item-r">...set {profile.numScores} total scores!</p>
+                    <p className="metrics-right">...stepped on {profile.notesHit} notes</p>
+                    <p className="metrics-left">...but also on {profile.minesHit} mines...</p>
                     <p className="metrics-right">...got {profile.grades && ("1" in profile.grades) && profile.grades["1"].length || 0} quads!</p>
                     <p className="metrics-left">...played Disco Pop {profile.discoPop} times!</p>
                     {profile.numQuads > 0 && <p>You got {profile.numQuads} quad{profile.numQuads == 1 ? "" : "s"}!</p>}

@@ -6,6 +6,8 @@ function newProfile(name) {
     let profile = {
         username: name,
         numScores: 0,
+        notesHit: 0,
+        minesHit: 0,
         daysPlayed: {},         // Number of scores set on each unique day of year
         packPlays: {},          // Number of scores set by pack
         songPlays: {},          // Number of scores set by song
@@ -55,6 +57,15 @@ function processScore(profile, score) {
         if (parseFloat(score["PercentDP"]["_text"]) >= 1.0) {
             profile.numQuads++;
         }
+
+        // Count notes hit
+        for (let i=1; i<5; i++){
+            let window = "W" + i.toString();
+            profile.notesHit += parseInt(score["TapNoteScores"][window]["_text"]);
+        }
+
+        // Count mines hit
+        profile.minesHit += parseInt(score["TapNoteScores"]["HitMine"]["_text"]);
 
         // Save score in grades if above threshold
         const grade = parseInt(score["Grade"]["_text"].substring(4, 6));
