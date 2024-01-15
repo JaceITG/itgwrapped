@@ -84,6 +84,10 @@ function getMaxDict(dict) {
         return max_key;
 };
 
+function getSongName(score) {
+    return score["Song"]["path"].split('/').slice(-2);
+}
+
 export {
-    newProfile, processScore, getMaxDict,
+    newProfile, processScore, getMaxDict, getSongName,
 }

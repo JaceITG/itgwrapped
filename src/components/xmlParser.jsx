@@ -3,7 +3,7 @@ import './xmlParser.css';
 import stats from '../assets/Stats.xml';
 import xmlJs from 'xml-js';
 import JSONPretty from 'react-json-pretty';
-import { newProfile, processScore, getMaxDict } from './wrapCalc.jsx';
+import { newProfile, processScore, getMaxDict, getSongName } from './wrapCalc.jsx';
 
 const dateFormat = new Intl.DateTimeFormat("en", {
     month: "long",
@@ -122,16 +122,26 @@ class XmlParser extends React.Component {
                     <p className="stats-title-a">Hello, {profile.username}</p>
                     <p className="stats-title-b">In 2023, you...</p>
                 </div>
-                <ul class="stats-list metrics">
-                    <li>...set <p class="value">{profile.numScores}</p> total scores!</li>
-                    <li>...stepped on <p class="value">{profile.notesHit}</p> notes</li>
-                    <li>...but also on <p class="value">{profile.minesHit}</p> mines...</li>
-                    <li>...got <p class="value">{profile.grades && ("1" in profile.grades) && profile.grades["1"].length || 0}</p> quads!</li>
-                    <li>...played Disco Pop <p class="value">{profile.discoPop}</p> times!</li>
-                    {profile.numQuads > 0 && <li>You got <p class="value">{profile.numQuads}</p> quad{profile.numQuads == 1 ? "" : "s"}!</li>}
-                    <li>Biggest Day: <p class="value">{dateFormat.format(Date.parse(biggestDay))}</p> with {profile.daysPlayed[biggestDay]} scores set!</li>
-                    <li>Favorite Pack: <p class="value">{mostPlayedPack}</p> with {profile.packPlays[mostPlayedPack]} scores set!</li>
-                    <li>Favorite Song: <p class="value">{mostPlayedSong}</p> with {profile.songPlays[mostPlayedSong]} scores set!</li>
+                <ul className="stats-list metrics">
+                    <li>...set <p className="value">{profile.numScores}</p> total scores!</li>
+                    <li>...stepped on <p className="value">{profile.notesHit}</p> notes</li>
+                    <li>...but also on <p className="value">{profile.minesHit}</p> mines...</li>
+                    
+                    { profile.grades && ("1" in profile.grades) &&
+                        <li>...got <p className="value">{profile.grades["1"].length || 0}</p> quads!
+                            <a>
+                                { profile.grades["1"].map(score => 
+                                    <p>{getSongName(score)}</p> 
+                                )}
+                            </a>
+                        </li>
+                    }
+
+                    <li>...played Disco Pop <p className="value">{profile.discoPop}</p> times!</li>
+                    {profile.numQuads > 0 && <li>You got <p className="value">{profile.numQuads}</p> quad{profile.numQuads == 1 ? "" : "s"}!</li>}
+                    <li>Biggest Day: <p className="value">{dateFormat.format(Date.parse(biggestDay))}</p> with {profile.daysPlayed[biggestDay]} scores set!</li>
+                    <li>Favorite Pack: <p className="value">{mostPlayedPack}</p> with {profile.packPlays[mostPlayedPack]} scores set!</li>
+                    <li>Favorite Song: <p className="value">{mostPlayedSong}</p> with {profile.songPlays[mostPlayedSong]} scores set!</li>
                     <li>
                         <p>★★★★: {("1" in profile.grades) && profile.grades["1"].length || 0}</p>
                         <p>★★★: {("2" in profile.grades) && profile.grades["2"].length || 0}</p>
