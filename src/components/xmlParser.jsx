@@ -132,13 +132,13 @@ class XmlParser extends React.Component {
                     <li>Biggest Day: <p class="value">{dateFormat.format(Date.parse(biggestDay))}</p> with {profile.daysPlayed[biggestDay]} scores set!</li>
                     <li>Favorite Pack: <p class="value">{mostPlayedPack}</p> with {profile.packPlays[mostPlayedPack]} scores set!</li>
                     <li>Favorite Song: <p class="value">{mostPlayedSong}</p> with {profile.songPlays[mostPlayedSong]} scores set!</li>
+                    <li>
+                        <p>★★★★: {("1" in profile.grades) && profile.grades["1"].length || 0}</p>
+                        <p>★★★: {("2" in profile.grades) && profile.grades["2"].length || 0}</p>
+                        <p>★★: {("3" in profile.grades) && profile.grades["3"].length || 0}</p>
+                        <p>★: {("4" in profile.grades) && profile.grades["4"].length || 0}</p>
+                    </li>
                 </ul>
-                <div>
-                    <p>★★★★: {("1" in profile.grades) && profile.grades["1"].length || 0}</p>
-                    <p>★★★: {("2" in profile.grades) && profile.grades["2"].length || 0}</p>
-                    <p>★★: {("3" in profile.grades) && profile.grades["3"].length || 0}</p>
-                    <p>★: {("4" in profile.grades) && profile.grades["4"].length || 0}</p>
-                </div>
                 <JSONPretty id="json-pretty" data={profile.grades}></JSONPretty>
             </div>
         );
