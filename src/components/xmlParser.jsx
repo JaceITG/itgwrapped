@@ -5,6 +5,11 @@ import xmlJs from 'xml-js';
 import JSONPretty from 'react-json-pretty';
 import { newProfile, processScore, getMaxDict } from './wrapCalc.jsx';
 
+const dateFormat = new Intl.DateTimeFormat("en", {
+    month: "long",
+    day: "numeric",
+});
+
 class XmlParser extends React.Component {
     constructor(props) {
         super(props);
@@ -118,15 +123,15 @@ class XmlParser extends React.Component {
                     <p className="stats-title-b">In 2023, you...</p>
                 </div>
                 <ul class="stats-list metrics">
-                    <li>...set {profile.numScores} total scores!</li>
-                    <li>...stepped on {profile.notesHit} notes</li>
-                    <li>...but also on {profile.minesHit} mines...</li>
-                    <li>...got {profile.grades && ("1" in profile.grades) && profile.grades["1"].length || 0} quads!</li>
-                    <li>...played Disco Pop {profile.discoPop} times!</li>
-                    {profile.numQuads > 0 && <li>You got {profile.numQuads} quad{profile.numQuads == 1 ? "" : "s"}!</li>}
-                    <li>Biggest Day: {biggestDay} with {profile.daysPlayed[biggestDay]} scores set!</li>
-                    <li>Favorite Pack: {mostPlayedPack} with {profile.packPlays[mostPlayedPack]} scores set!</li>
-                    <li>Favorite Song: {mostPlayedSong} with {profile.songPlays[mostPlayedSong]} scores set!</li>
+                    <li>...set <p class="value">{profile.numScores}</p> total scores!</li>
+                    <li>...stepped on <p class="value">{profile.notesHit}</p> notes</li>
+                    <li>...but also on <p class="value">{profile.minesHit}</p> mines...</li>
+                    <li>...got <p class="value">{profile.grades && ("1" in profile.grades) && profile.grades["1"].length || 0}</p> quads!</li>
+                    <li>...played Disco Pop <p class="value">{profile.discoPop}</p> times!</li>
+                    {profile.numQuads > 0 && <li>You got <p class="value">{profile.numQuads}</p> quad{profile.numQuads == 1 ? "" : "s"}!</li>}
+                    <li>Biggest Day: <p class="value">{dateFormat.format(Date.parse(biggestDay))}</p> with {profile.daysPlayed[biggestDay]} scores set!</li>
+                    <li>Favorite Pack: <p class="value">{mostPlayedPack}</p> with {profile.packPlays[mostPlayedPack]} scores set!</li>
+                    <li>Favorite Song: <p class="value">{mostPlayedSong}</p> with {profile.songPlays[mostPlayedSong]} scores set!</li>
                 </ul>
                 <div>
                     <p>★★★★: {("1" in profile.grades) && profile.grades["1"].length || 0}</p>

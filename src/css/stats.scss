@@ -48,6 +48,10 @@
 	}
 }
 
+.value {
+	font-size: 2em;
+}
+
 .stats-list {
 	@include util.flex($dir: column, $x-align: center, $gap: 40px);
 	margin: 0 auto;
@@ -56,8 +60,21 @@
 
 li {
 	align-self: flex-start;
+
+	// ~~Stolen~~ Borrowed from metrics-item-r
+	font-size: 1.25em;
+	font-weight: 400;
+	width: 60%;
+	height: 300px;
+	background-image: linear-gradient(110deg, color.$accent-r 50%, color.$accent-r-alt 90%);
+	padding: 20px 10% 20px 20px;
+	border-radius: 5px;
 }
 
 li:nth-child(even) {
 	align-self: flex-end;
+	text-align: end;
+
+	background-image: linear-gradient(110deg, color.$accent-r-alt 50%, color.$accent-r 90%);
+	padding: 20px 20px 20px 10%;
 }
