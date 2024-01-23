@@ -28,24 +28,6 @@
 	@include util.flex($dir: column, $x-align: center, $gap: 40px);
 	margin: 0 auto;
 	width: 50%;
-
-	&-item {
-		&-r {
-			font-size: 1.25em;
-			font-weight: 400;
-			background-image: linear-gradient(110deg, color.$accent-p 50%, color.$accent-p-alt 90%);
-			padding: 20px 40% 20px 20px;
-			border-radius: 5px;
-		}
-	}
-
-	&-left {
-		align-self: flex-start;
-	}
-
-	&-right {
-		align-self: flex-end;
-	}
 }
 
 .value {
