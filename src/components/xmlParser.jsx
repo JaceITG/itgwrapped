@@ -1,5 +1,5 @@
 import React from 'react';
-import './xmlParser.css';
+import quadIcon from '../assets/quad.svg';
 import xmlJs from 'xml-js';
 import JSONPretty from 'react-json-pretty';
 import { newProfile, processScore, getMaxDict, getSongName } from './wrapCalc.jsx';
@@ -132,7 +132,10 @@ class XmlParser extends React.Component {
                                 {   //TODO: Limit listed quadded songs to ~5 and remove dupes
                                     profile.grades["1"].map( (score, index) => 
                                     index < 5 &&
-                                    <p className="name">{getSongName(score)}</p> 
+                                    <div>
+                                        <img className="quad" src={quadIcon} />
+                                        <a>  {getSongName(score)}</a> 
+                                    </div>
                                 )}
 
                                 { profile.grades["1"].length >= 5 &&
