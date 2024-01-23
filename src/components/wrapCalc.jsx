@@ -1,4 +1,3 @@
-import React from 'react';
 
 const gradeThreshold = 4;    // Select scores with 1 Star grade or better
 
@@ -9,6 +8,7 @@ function newProfile(name) {
         notesHit: 0,
         minesHit: 0,
         daysPlayed: {},         // Number of scores set on each unique day of year
+        timestamps: [],         // Sorted list of datetime ints to ensure no dupe scores
         packPlays: {},          // Number of scores set by pack
         songPlays: {},          // Number of scores set by song
         grades: {},             // GradeTier, Array score objects (for viewable list of songs quadded? alternatively only retain hardest quad)
@@ -21,14 +21,24 @@ function newProfile(name) {
 }
     
 function processScore(profile, score) {
-        // Inc numScores
-        profile.numScores++;
-
+    
         // Set default and inc scores set on this day
-        let date = score["DateTime"]["_text"]
-        date = date.split(" ")[0]
+        let dateString = score["DateTime"]["_text"];
+        let date = dateString.split(" ")[0];
+        let datetime = Date.parse(dateString);
+
+        if (profile.timestamps.includes(datetime)){
+            // Score at this datetime already recorded, skip
+            return profile;
+        }
+
+        profile.timestamps.push(datetime);
         profile.daysPlayed[ date ] ??= 0;
         profile.daysPlayed[ date ]++;
+        
+
+        // Inc numScores
+        profile.numScores++;
 
         //Separate path/song elems and remove last
         let songPath = score["Song"]["path"].split('/');
@@ -86,7 +96,8 @@ function getMaxDict(dict) {
 
 function getSongName(score) {
     return score["Song"]["path"].split('/').slice(-2);
-}
+};
+
 
 export {
     newProfile, processScore, getMaxDict, getSongName,
