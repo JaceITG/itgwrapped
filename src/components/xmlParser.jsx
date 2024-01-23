@@ -122,9 +122,9 @@ class XmlParser extends React.Component {
                     <p className="stats-title-b">In 2023, you...</p>
                 </div>
                 <ul className="stats-list metrics">
-                    <li>...set <p className="value">{profile.numScores}</p> total scores!</li>
-                    <li>...stepped on <p className="value">{profile.notesHit}</p> notes</li>
-                    <li>...but also on <p className="value">{profile.minesHit}</p> mines...</li>
+                    <li>...set <p className="value">{profile.numScores.toLocaleString()}</p> total scores!</li>
+                    <li>...stepped on <p className="value">{profile.notesHit.toLocaleString()}</p> notes</li>
+                    <li>...but also on <p className="value">{profile.minesHit.toLocaleString()}</p> mines...</li>
                     
                     { profile.grades && ("1" in profile.grades) &&
                         <li>...got <a className="value">{profile.grades["1"].length || 0}</a> quads! On...
