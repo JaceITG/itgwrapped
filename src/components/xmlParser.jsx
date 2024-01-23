@@ -127,18 +127,22 @@ class XmlParser extends React.Component {
                     <li>...but also on <p className="value">{profile.minesHit}</p> mines...</li>
                     
                     { profile.grades && ("1" in profile.grades) &&
-                        <li>...got <p className="value">{profile.grades["1"].length || 0}</p> quads!
+                        <li>...got <a className="value">{profile.grades["1"].length || 0}</a> quads! On...
                             <a>
                                 {   //TODO: Limit listed quadded songs to ~5 and remove dupes
-                                    profile.grades["1"].map(score => 
-                                    <p>{getSongName(score)}</p> 
+                                    profile.grades["1"].map( (score, index) => 
+                                    index < 5 &&
+                                    <p className="name">{getSongName(score)}</p> 
                                 )}
+
+                                { profile.grades["1"].length >= 5 &&
+                                    <p>...and more!</p>
+                                }
                             </a>
                         </li>
                     }
 
                     <li>...played Disco Pop <p className="value">{profile.discoPop}</p> times!</li>
-                    {profile.numQuads > 0 && <li>You got <p className="value">{profile.numQuads}</p> quad{profile.numQuads == 1 ? "" : "s"}!</li>}
                     <li>Biggest Day: <p className="value">{dateFormat.format(Date.parse(biggestDay))}</p> with {profile.daysPlayed[biggestDay]} scores set!</li>
                     <li>Favorite Pack: <p className="value">{mostPlayedPack}</p> with {profile.packPlays[mostPlayedPack]} scores set!</li>
                     <li>Favorite Song: <p className="value">{mostPlayedSong}</p> with {profile.songPlays[mostPlayedSong]} scores set!</li>

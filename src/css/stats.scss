@@ -56,6 +56,12 @@
 	@include util.flex($dir: column, $x-align: center, $gap: 40px);
 	margin: 0 auto;
 	width: 50%;
+
+}
+
+.name {
+	font-size: 1.25em;
+	color: color.$accent-p-alt2;
 }
 
 li {
