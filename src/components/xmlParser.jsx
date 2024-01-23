@@ -1,6 +1,5 @@
 import React from 'react';
 import './xmlParser.css';
-import stats from '../assets/Stats.xml';
 import xmlJs from 'xml-js';
 import JSONPretty from 'react-json-pretty';
 import { newProfile, processScore, getMaxDict, getSongName } from './wrapCalc.jsx';

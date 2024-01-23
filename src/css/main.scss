@@ -16,7 +16,7 @@ html {
 
 .title-screen {
 	height: 100vh;
-	@include util.flex($dir: column, $x-align: center, $gap: 30px);
+	@include util.flex($dir: column, $x-align: center, $gap: 100px);
 	margin: 0 auto;
 
 	&-text-wrapper {
@@ -63,4 +63,30 @@ html {
 	}
 
 
+}
+
+.info {
+
+	&-box {
+		border: 1px solid color.$notice-y;
+		border-radius: 10px;
+		padding: 20px 20px;
+		max-width: 40%;
+		text-align: center;
+
+		&-text {
+			font-size: 0.85em;
+		}
+
+		&-text-link {
+			font-size: 0.85em;
+			color: color.$accent-b-alt;
+			text-decoration: underline;
+		}
+	}
+
+	&-warning {
+		font-size: 0.7em;
+		color: color.$lite-grey;
+	}
 }

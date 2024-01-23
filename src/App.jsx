@@ -39,6 +39,13 @@ function App() {
               </section>
             )}
           </Dropzone>
+          <div className="info-box">
+            <a className="info-box-text">To combine scores set across ITG and FA+ gamemodes, try out </a>
+            <a className="info-box-text-link" href="https://mergestats.itgmania.com/">Teejusb's Stats Merger</a>
+          </div>
+          <div className="info-warning">
+            <p>⚠ Please note that scores coming from setups not using ITGMania + Simply Love may cause inaccurate stats or break stuff... oops.</p>
+          </div>
         </div>
         :
         <div className="container">
