@@ -33,7 +33,7 @@
 		&-r {
 			font-size: 1.25em;
 			font-weight: 400;
-			background-image: linear-gradient(110deg, color.$accent-r 50%, color.$accent-r-alt 90%);
+			background-image: linear-gradient(110deg, color.$accent-p 50%, color.$accent-p-alt 90%);
 			padding: 20px 40% 20px 20px;
 			border-radius: 5px;
 		}
@@ -70,9 +70,10 @@ li {
 	// ~~Stolen~~ Borrowed from metrics-item-r
 	font-size: 1.25em;
 	font-weight: 400;
+	text-shadow: 2px 2px 1px color.$dark2;
 	width: 60%;
 	height: 300px;
-	background-image: linear-gradient(110deg, color.$accent-r 50%, color.$accent-r-alt 90%);
+	background-image: linear-gradient(110deg, color.$accent-p 50%, color.$accent-p-alt2 90%);
 	padding: 20px 10% 20px 20px;
 	border-radius: 5px;
 }
@@ -81,6 +82,6 @@ li:nth-child(even) {
 	align-self: flex-end;
 	text-align: end;
 
-	background-image: linear-gradient(110deg, color.$accent-r-alt 50%, color.$accent-r 90%);
+	background-image: linear-gradient(110deg, color.$accent-p-alt2 50%, color.$accent-p 90%);
 	padding: 20px 20px 20px 10%;
 }
