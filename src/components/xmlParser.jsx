@@ -1,5 +1,8 @@
 import React from 'react';
 import quadIcon from '../assets/quad.svg';
+import triIcon from '../assets/tri.svg';
+import dubIcon from '../assets/dub.svg';
+import starIcon from '../assets/star.svg';
 import xmlJs from 'xml-js';
 import JSONPretty from 'react-json-pretty';
 import { newProfile, processScore, getMaxDict, getSongName } from './wrapCalc.jsx';
@@ -133,7 +136,7 @@ class XmlParser extends React.Component {
                                     profile.grades["1"].map( (score, index) => 
                                     index < 5 &&
                                     <div>
-                                        <img className="quad" src={quadIcon} />
+                                        <img className="stars" src={quadIcon} />
                                         <a>  {getSongName(score)}</a> 
                                     </div>
                                 )}
@@ -150,10 +153,22 @@ class XmlParser extends React.Component {
                     <li>Favorite Pack: <p className="value">{mostPlayedPack}</p> with {profile.packPlays[mostPlayedPack]} scores set!</li>
                     <li>Favorite Song: <p className="value">{mostPlayedSong}</p> with {profile.songPlays[mostPlayedSong]} scores set!</li>
                     <li>
-                        <p>★★★★: {("1" in profile.grades) && profile.grades["1"].length || 0}</p>
-                        <p>★★★: {("2" in profile.grades) && profile.grades["2"].length || 0}</p>
-                        <p>★★: {("3" in profile.grades) && profile.grades["3"].length || 0}</p>
-                        <p>★: {("4" in profile.grades) && profile.grades["4"].length || 0}</p>
+                        <p className="value">
+                            <img className="stars" src={quadIcon} /> ~ 
+                             {("1" in profile.grades) && profile.grades["1"].length || 0}
+                        </p>
+                        <p className="value">
+                            <img className="stars" src={triIcon} /> ~ 
+                             {("2" in profile.grades) && profile.grades["2"].length || 0}
+                        </p>
+                        <p className="value">
+                            <img className="stars" src={dubIcon} /> ~ 
+                            {("3" in profile.grades) && profile.grades["3"].length || 0}
+                        </p>
+                        <p className="value">
+                            <img className="stars" src={starIcon} /> ~ 
+                             {("4" in profile.grades) && profile.grades["4"].length || 0}
+                        </p>
                     </li>
                 </ul>
                 <JSONPretty id="json-pretty" data={profile.grades}></JSONPretty>
