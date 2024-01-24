@@ -137,7 +137,7 @@ class XmlParser extends React.Component {
                                     index < 5 &&
                                     <div>
                                         <img className="stars" src={quadIcon} />
-                                        <a>  {getSongName(score)}</a> 
+                                        <b>  {getSongName(score)}</b> 
                                     </div>
                                 )}
 

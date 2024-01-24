@@ -28,6 +28,7 @@
 	@include util.flex($dir: column, $x-align: center, $gap: 40px);
 	margin: 0 auto;
 	width: 50%;
+	text-shadow: 2px 2px color.$dark2;
 }
 
 .value {
@@ -47,23 +48,26 @@
 }
 
 li {
+	@include util.flex($dir: column, $x-align: flex-start, $gap: 3px);
 	align-self: flex-start;
 
 	// ~~Stolen~~ Borrowed from metrics-item-r
 	font-size: 1.25em;
 	font-weight: 400;
-	text-shadow: 2px 2px 1px color.$dark2;
 	width: 60%;
 	height: 300px;
 	background-image: linear-gradient(110deg, color.$accent-p 50%, color.$accent-p-alt2 90%);
 	padding: 20px 10% 20px 20px;
 	border-radius: 5px;
+	filter: drop-shadow(-4px -4px 0px color.$dark2);
 }
 
 li:nth-child(even) {
+	@include util.flex($dir: column, $x-align: flex-end, $gap: 3px);
 	align-self: flex-end;
 	text-align: end;
 
 	background-image: linear-gradient(110deg, color.$accent-p-alt2 50%, color.$accent-p 90%);
 	padding: 20px 20px 20px 10%;
+	filter: drop-shadow(4px -4px 0px color.$dark2);
 }
