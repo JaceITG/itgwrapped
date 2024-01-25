@@ -14,6 +14,9 @@ class Heatmap extends React.Component {
 
 	async parseDates() {
 		let year = []
+		let daysPlayed = Object.keys(this.props.dates)
+
+		// Populate year array with months
 		for (let i = 0; i < 12; i++) {
 			let numDays = 0;
 			if (i === 1) {
@@ -24,6 +27,12 @@ class Heatmap extends React.Component {
 			let mo = new Array(numDays).fill(0);
 			year[i] = mo;
 		}
+
+		// john fucking madden
+		daysPlayed.forEach((day) => {
+			console.log(parseInt(day.substring(5, 7)) + ", " + parseInt(day.substring(8, 10)))
+			year[parseInt(day.substring(5, 7)) - 1][parseInt(day.substring(8, 10)) - 1] = this.props.dates[day]
+		})
 		console.log(year)
 		this.setState({calendar: year});
 	}
