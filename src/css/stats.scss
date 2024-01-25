@@ -47,7 +47,7 @@
 
 }
 
-.stats-list.li {
+.stats-list li {
 	@include util.flex($dir: column, $x-align: flex-start, $gap: 3px);
 	align-self: flex-start;
 
@@ -66,8 +66,8 @@
 		drop-shadow(0px -3px color.$dark2);
 }
 
-.stats-list.li:nth-child(even) {
-	@include util.flex($dir: column, $x-align: flex-end, $gap: 3px);
+.stats-list li:nth-child(even) {
+	@include util.flex($dir: column, $wrap: nowrap, $x-align: flex-end, $gap: 3px);
 	align-self: flex-end;
 	text-align: end;
 

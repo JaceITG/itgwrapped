@@ -131,7 +131,7 @@ class XmlParser extends React.Component {
                     <li>...but also on <p className="value">{profile.minesHit.toLocaleString()}</p> mines...</li>
                     
                     { profile.grades && ("1" in profile.grades) &&
-                        <li>...got <a className="value">{profile.grades["1"].length || 0}</a> quads! On...
+                        <li>...got {profile.grades["1"].length || 0} quads!
                             <a>
                                 {   //TODO: Limit listed quadded songs to ~5 and remove dupes
                                     profile.grades["1"].map( (score, index) => 
