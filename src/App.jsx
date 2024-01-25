@@ -1,6 +1,6 @@
 import React from "react";
 import {
-    createBrowserRouter,
+    createHashRouter,
     createRoutesFromElements,
     Route,
     Routes,
@@ -10,19 +10,22 @@ import {
 import TitlePage from "./TitlePage.jsx";
 import XmlParser from './components/xmlParser'; 
 
-const router = createBrowserRouter(
-    createRoutesFromElements(
-        <Route path="/" element={undefined}>
-            <Route exact path="/itgwrapped/" element={<TitlePage />} />
-            <Route exact path="/itgwrapped/demo" element={<XmlParser stats="/itgwrapped/Stats.xml" />} />
-        </Route>
-    )
-);
+const router = createHashRouter([
+    {
+        path: "/",
+        element: <TitlePage />,
+    },
+    {
+        path: "demo",
+        element: <XmlParser stats="/itgwrapped/Stats.xml" />,
+    },
+
+]);
 
 const App = () => {
   return (
     <React.StrictMode>
-        <RouterProvider router={router} />
+        <RouterProvider router={router}/>
     </React.StrictMode>
   );
 };
