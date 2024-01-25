@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react'
 import XmlParser from './components/xmlParser';
+import StatsGuide from './components/StatsGuide';
 import Dropzone from 'react-dropzone';
 
 function App() {
@@ -22,7 +23,6 @@ function App() {
 
   return (
     <>
-      {/* todo: defo some sort of async thing so that we load the results page only after all stats are processed */}
       {file === 0 ?
         <div className="title-screen">
           <div className="title-screen-text-wrapper">
@@ -39,6 +39,7 @@ function App() {
               </section>
             )}
           </Dropzone>
+          <StatsGuide className="info-box" />
           <div className="info-box">
             <a className="info-box-text">To combine scores set across ITG and FA+ gamemodes, try out </a>
             <a className="info-box-text-link" href="https://mergestats.itgmania.com/">Teejusb's Stats Merger</a>

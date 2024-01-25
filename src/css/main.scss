@@ -83,6 +83,48 @@ html {
 			color: color.$accent-b-alt;
 			text-decoration: underline;
 		}
+
+		&-hoverable {
+			padding: 0px;
+		}
+
+		&-hoverable:hover {
+			border-color: color.$lite;
+		}
+	}
+
+	&-box:hover {
+		border-color: color.$lite;
+	}
+
+	&-modal {
+		border: 1px solid color.$accent-p;
+		border-radius: 5px;
+		padding: 30px 30px;
+		background-color: color.$dark;
+		backdrop-filter: blur(8px);
+
+		text-align: left;
+		font-size: 1em;
+		line-height: 2;
+
+		h1 {
+			font-size: 1.5em;
+			text-decoration: underline;
+			text-align: center;
+		}
+
+		p {
+			line-height: 1.25;
+			text-indent: 10%;
+		}
+
+		&-close {
+			padding-top: 40px;
+			font-size: 0.8em;
+			color: color.$lite-grey;
+			text-align: center;
+		}
 	}
 
 	&-warning {
