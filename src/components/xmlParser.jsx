@@ -155,19 +155,19 @@ class XmlParser extends React.Component {
                     <li>Favorite Song: <p className="value">{mostPlayedSong}</p> with {profile.songPlays[mostPlayedSong]} scores set!</li>
                     <li>
                         <p className="value">
-                            <img className="stars" src={quadIcon} /> ~ 
+                            <img className="stars" src={quadIcon} /> 
                              {("1" in profile.grades) && profile.grades["1"].length || 0}
                         </p>
                         <p className="value">
-                            <img className="stars" src={triIcon} /> ~ 
+                            <img className="stars" src={triIcon} /> 
                              {("2" in profile.grades) && profile.grades["2"].length || 0}
                         </p>
                         <p className="value">
-                            <img className="stars" src={dubIcon} /> ~ 
+                            <img className="stars" src={dubIcon} /> 
                             {("3" in profile.grades) && profile.grades["3"].length || 0}
                         </p>
                         <p className="value">
-                            <img className="stars" src={starIcon} /> ~ 
+                            <img className="stars" src={starIcon} /> 
                              {("4" in profile.grades) && profile.grades["4"].length || 0}
                         </p>
                     </li>
