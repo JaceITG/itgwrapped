@@ -6,6 +6,7 @@ import starIcon from '../assets/star.svg';
 import xmlJs from 'xml-js';
 import JSONPretty from 'react-json-pretty';
 import { newProfile, processScore, getMaxDict, getSongName } from './wrapCalc.jsx';
+import Heatmap from './Heatmap';
 
 const dateFormat = new Intl.DateTimeFormat("en", {
     month: "long",
@@ -171,7 +172,8 @@ class XmlParser extends React.Component {
                         </p>
                     </li>
                 </ul>
-                <JSONPretty id="json-pretty" data={profile.grades}></JSONPretty>
+                <Heatmap dates = {profile.daysPlayed} />
+                {/*<JSONPretty id="json-pretty" data={profile.grades}></JSONPretty>*/}
             </div>
         );
     }
