@@ -1,11 +1,11 @@
 import React from 'react';
-import { useRef } from 'react';
 import quadIcon from '../assets/quad.svg';
 import triIcon from '../assets/tri.svg';
 import dubIcon from '../assets/dub.svg';
 import starIcon from '../assets/star.svg';
 
 import xmlJs from 'xml-js';
+import html2canvas from 'html2canvas';
 import { newProfile, processScore, getMaxDict, getSongName } from './wrapCalc.jsx';
 import Heatmap from './Heatmap';
 import Sharable from './Sharable.jsx';
@@ -24,6 +24,12 @@ class XmlParser extends React.Component {
         }
 
         this.readXML(props.stats);
+    }
+
+    async handleShare() {
+        html2canvas(document.getElementsByClassName('stats-modal')[0]).then( (canvas) => {
+            document.body.appendChild(canvas);
+        });
     }
 
     async parseStats(obj, year = 2023) {
@@ -176,7 +182,7 @@ class XmlParser extends React.Component {
                     </li>
                 </ul>
                 <Heatmap dates = {profile.daysPlayed} maxDay = {profile.daysPlayed[biggestDay]} />
-                <button onClick={() => this.handleShare()}>Share</button>
+                <div className='info-box' onClick={() => this.handleShare()}><div className='info-box-text'>Share</div></div>
                 <Sharable profile={profile} mostPlayedPack={mostPlayedPack}
                     mostPlayedSong={mostPlayedSong} biggestDay={biggestDay}/>
             </div>

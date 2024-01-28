@@ -1,7 +1,5 @@
 import Popup from 'reactjs-popup';
 import React from 'react';
-import { useRef } from 'react';
-import { toPng } from 'html-to-image';
 
 import quadIcon from '../assets/quad.svg';
 import triIcon from '../assets/tri.svg';
