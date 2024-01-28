@@ -133,7 +133,7 @@ class XmlParser extends React.Component {
                     { profile.grades && ("1" in profile.grades) &&
                         <li>...got {profile.grades["1"].length || 0} quads!
                             <a>
-                                {   //TODO: Limit listed quadded songs to ~5 and remove dupes
+                                {
                                     profile.grades["1"].map( (score, index) => 
                                     index < 5 &&
                                     <div>
