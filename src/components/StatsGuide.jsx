@@ -8,7 +8,7 @@ const StatsGuide = () => {
             modal nested>
             {
                 close => (
-                    <div className='modal-container' onClick=
+                    <div className='info-modal' onClick=
                         {() => close()}>
                         <div className='info-modal'>
                             <div className='info-modal-content'>

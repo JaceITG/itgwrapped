@@ -1,17 +1,20 @@
 import React from 'react';
+import { useRef } from 'react';
 import quadIcon from '../assets/quad.svg';
 import triIcon from '../assets/tri.svg';
 import dubIcon from '../assets/dub.svg';
 import starIcon from '../assets/star.svg';
+
 import xmlJs from 'xml-js';
-import JSONPretty from 'react-json-pretty';
 import { newProfile, processScore, getMaxDict, getSongName } from './wrapCalc.jsx';
 import Heatmap from './Heatmap';
+import Sharable from './Sharable.jsx';
 
 const dateFormat = new Intl.DateTimeFormat("en", {
     month: "long",
     day: "numeric",
 });
+
 
 class XmlParser extends React.Component {
     constructor(props) {
@@ -101,7 +104,7 @@ class XmlParser extends React.Component {
     }
 
     render() {
-        const { profile } = this.state;
+        const { profile, image } = this.state;
 
         if (profile === undefined) {
             return(
@@ -173,16 +176,12 @@ class XmlParser extends React.Component {
                     </li>
                 </ul>
                 <Heatmap dates = {profile.daysPlayed} maxDay = {profile.daysPlayed[biggestDay]} />
-                {/*<JSONPretty id="json-pretty" data={profile.grades}></JSONPretty>*/}
+                <button onClick={() => this.handleShare()}>Share</button>
+                <Sharable profile={profile} mostPlayedPack={mostPlayedPack}
+                    mostPlayedSong={mostPlayedSong} biggestDay={biggestDay}/>
             </div>
         );
     }
 }
-
-/* Full JSON Stats.xml debug element
-
-<JSONPretty id="json-pretty" data={data}></JSONPretty>
-
-*/
 
 export default XmlParser;
