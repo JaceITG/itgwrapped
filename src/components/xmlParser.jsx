@@ -123,15 +123,15 @@ class XmlParser extends React.Component {
             <div className="stats-wrapper">
                 <div className="stats-title">
                     <p className="stats-title-a">Hey {profile.username}!</p>
-                    <p className="stats-title-b">In 2023...</p>
+                    <p className="stats-title-b">In 2023, you...</p>
                 </div>
-                <div className="stats-list metrics">
-                    <div className = "stats-list-item">You set <p className="value">{profile.numScores.toLocaleString()}</p> total scores!</div>
-                    <div className = "stats-list-item">You stepped on <p className="value">{profile.notesHit.toLocaleString()}</p> notes!</div>
-                    <div className = "stats-list-item">...but you also hit <p className="value">{profile.minesHit.toLocaleString()}</p> mines...</div>
+                <ul className="stats-list metrics">
+                    <li>...set <p className="value">{profile.numScores.toLocaleString()}</p> total scores!</li>
+                    <li>...stepped on <p className="value">{profile.notesHit.toLocaleString()}</p> notes</li>
+                    <li>...but also on <p className="value">{profile.minesHit.toLocaleString()}</p> mines...</li>
                     
                     { profile.grades && ("1" in profile.grades) &&
-                        <div className = "stats-list-item">You got {profile.grades["1"].length || 0} quads!
+                        <li>...got {profile.grades["1"].length || 0} quads!
                             <a>
                                 {
                                     profile.grades["1"].map( (score, index) => 
@@ -146,32 +146,32 @@ class XmlParser extends React.Component {
                                     <p>...and more!</p>
                                 }
                             </a>
-                        </div>
+                        </li>
                     }
 
-                    <div className = "stats-list-item">You played Disco Pop <p className="value">{profile.discoPop}</p> times!</div>
-                    <div className = "stats-list-item">Your biggest day was <p className="value">{dateFormat.format(Date.parse(biggestDay))}</p> where you set {profile.daysPlayed[biggestDay]} scores!</div>
-                    <div className = "stats-list-item">Your favorite pack was <p className="value">{mostPlayedPack}</p> with {profile.packPlays[mostPlayedPack]} scores set!</div>
-                    <div className = "stats-list-item">And your favorite song was <p className="value">{mostPlayedSong}</p> which you played {profile.songPlays[mostPlayedSong]} times!</div>
-                    <div className = "stats-list-grades">
-                        <div className="value">
-                            <img className="stats-list-stars" src={quadIcon} /> 
-                            <p>{("1" in profile.grades) && profile.grades["1"].length || 0}</p>
-                        </div>
-                        <div className="value">
-                            <img className="stats-list-stars" src={triIcon} /> 
-                            <p>{("2" in profile.grades) && profile.grades["2"].length || 0}</p>
-                        </div>
-                        <div className="value">
-                            <img className="stats-list-stars" src={dubIcon} /> 
-                            <p>{("3" in profile.grades) && profile.grades["3"].length || 0}</p>
-                        </div>
-                        <div className="value">
-                            <img className="stats-list-stars" src={starIcon} /> 
-                            <p>{("4" in profile.grades) && profile.grades["4"].length || 0}</p>
-                        </div>
-                    </div>
-                </div>
+                    <li>...played Disco Pop <p className="value">{profile.discoPop}</p> times!</li>
+                    <li>Biggest Day: <p className="value">{dateFormat.format(Date.parse(biggestDay))}</p> with {profile.daysPlayed[biggestDay]} scores set!</li>
+                    <li>Favorite Pack: <p className="value">{mostPlayedPack}</p> with {profile.packPlays[mostPlayedPack]} scores set!</li>
+                    <li>Favorite Song: <p className="value">{mostPlayedSong}</p> with {profile.songPlays[mostPlayedSong]} scores set!</li>
+                    <li>
+                        <p className="value">
+                            <img className="stars" src={quadIcon} /> 
+                             {("1" in profile.grades) && profile.grades["1"].length || 0}
+                        </p>
+                        <p className="value">
+                            <img className="stars" src={triIcon} /> 
+                             {("2" in profile.grades) && profile.grades["2"].length || 0}
+                        </p>
+                        <p className="value">
+                            <img className="stars" src={dubIcon} /> 
+                            {("3" in profile.grades) && profile.grades["3"].length || 0}
+                        </p>
+                        <p className="value">
+                            <img className="stars" src={starIcon} /> 
+                             {("4" in profile.grades) && profile.grades["4"].length || 0}
+                        </p>
+                    </li>
+                </ul>
                 <Heatmap dates = {profile.daysPlayed} maxDay = {profile.daysPlayed[biggestDay]} />
                 {/*<JSONPretty id="json-pretty" data={profile.grades}></JSONPretty>*/}
             </div>

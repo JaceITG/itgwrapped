@@ -13,13 +13,13 @@
 	margin: 0 auto;
 
 	&-a {
-		font-size: 3.8em;
+		font-size: 4em;
 		font-weight: 700;
 		filter: drop-shadow(7px 7px 0px color.$dark2);
 	}
 
 	&-b {
-		font-size: 1.8em;
+		font-size: 2em;
 		font-weight: 600;
 	}
 }
@@ -32,8 +32,7 @@
 }
 
 .value {
-	font-size: 1.8em;
-	font-weight: 600;
+	font-size: 2em;
 	transform: skew(-5deg, 0deg);
 }
 
@@ -43,67 +42,29 @@
 }
 
 .stats-list {
-	display: grid;
-	grid-template-columns: 33% 33% 33%;
-	column-gap: 20px;
-	row-gap: 20px;
-
+	@include util.flex($dir: column, $x-align: center, $gap: 40px);
 	margin: 0 auto;
-	width: 80%;
-	
-	&-item {
-		@include util.flex($dir: column, $align: flex-start, $x-align: flex-start, $gap: 3px);
-		align-self: flex-start;
-	
-		// ~~Stolen~~ Borrowed from metrics-item-r
-		font-size: 1.2em;
-		font-weight: 400;
-		width: 100%;
-		height: 6.5em;
-		background-image: linear-gradient(110deg, color.$accent-p 50%, color.$accent-p-alt2 90%);
-		padding: 20px 10% 20px 20px;
-		border-radius: 5px;
-		filter: 
-			drop-shadow(-3px 0px color.$dark2)
-			drop-shadow(3px 0px color.$dark2)
-			drop-shadow(0px 3px color.$dark2)
-			drop-shadow(0px -3px color.$dark2);
+	width: 50%;
 
-		&-flavor {
-			text-align: right;
-			font-size: 0.8em;
-			font-weight: 300;
-		}
-	}
+}
 
-	&-grades {
-		width: auto;
-		height: auto;
-		display: grid;
-		grid-template-columns: 50% 50%;
-		justify-content: center;
-		column-gap: 80px;
-		row-gap: 30px;
-		place-self: center;
-		align-items: stretch;
-		place-content: center;
+.stats-list li {
+	@include util.flex($dir: column, $x-align: flex-start, $gap: 3px);
+	align-self: flex-start;
 
-		&-grades-value {
-			font-size: 1.8em;
-			font-weight: 600;
-			transform: skew(-5deg, 0deg);
-			margin: 0 auto;
-			place-self: center;
-		}
-	}
-	&-stars {
-		width: 2em;
-		position: absolute;
-		place-self: center;
-		opacity: 0.5;
-		margin: 0 auto;
-	}
-
+	// ~~Stolen~~ Borrowed from metrics-item-r
+	font-size: 1.25em;
+	font-weight: 400;
+	width: 55%;
+	height: 10em;
+	background-image: linear-gradient(110deg, color.$accent-p 50%, color.$accent-p-alt2 90%);
+	padding: 20px 10% 20px 20px;
+	border-radius: 10px;
+	filter: 
+		drop-shadow(-3px 0px color.$dark2)
+		drop-shadow(3px 0px color.$dark2)
+		drop-shadow(0px 3px color.$dark2)
+		drop-shadow(0px -3px color.$dark2);
 }
 
 .stats-list li:nth-child(even) {
