@@ -122,7 +122,7 @@ class XmlParser extends React.Component {
         return (
             <div className="stats-wrapper">
                 <div className="stats-title">
-                    <p className="stats-title-a">Hello, {profile.username}</p>
+                    <p className="stats-title-a">Hey {profile.username}!</p>
                     <p className="stats-title-b">In 2023, you...</p>
                 </div>
                 <ul className="stats-list metrics">
