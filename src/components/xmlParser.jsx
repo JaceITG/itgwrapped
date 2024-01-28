@@ -172,7 +172,7 @@ class XmlParser extends React.Component {
                         </p>
                     </li>
                 </ul>
-                <Heatmap dates = {profile.daysPlayed} />
+                <Heatmap dates = {profile.daysPlayed} maxDay = {profile.daysPlayed[biggestDay]} />
                 {/*<JSONPretty id="json-pretty" data={profile.grades}></JSONPretty>*/}
             </div>
         );

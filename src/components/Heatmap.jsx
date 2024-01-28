@@ -10,12 +10,11 @@ class Heatmap extends React.Component {
 		}
 
 		this.parseDates()
-		console.log(this.props)
 	}
 
 	async parseDates() {
 		let year = []
-		let calendarGrid = [];
+		//let calendarGrid = [];
 		let daysPlayed = Object.keys(this.props.dates)
 
 		// Populate year array with months
@@ -31,66 +30,44 @@ class Heatmap extends React.Component {
 		}
 
 		//Populate Calendar display grid with weekdays
-		for (let i=0; i < 7; i++) calendarGrid.push([]);
+		//for (let i=0; i < 7; i++) calendarGrid.push([]);
 
 		// john fucking madden
-		daysPlayed.forEach((dateTime) => {
-			let month = parseInt(dateTime.substring(5, 7));
-			let day = parseInt(dateTime.substring(8, 10));
-			console.log(month + ", " + day);
-			year[month - 1][day - 1] = this.props.dates[dateTime]
+		daysPlayed.forEach((day) => {
+			year[parseInt(day.substring(5, 7)) - 1][parseInt(day.substring(8, 10)) - 1] = this.props.dates[day]
 		})
-
-		// Build calendar grid column-wise
-		let count = 0;
-		year.forEach( (month) => {
-			month.forEach((day) => {
-				calendarGrid[count%7].push(day);
-				count++;
-			});
-		});
-
-
-		console.log(calendarGrid);
-		this.state = {calendar: calendarGrid};
+		this.state = { calendar: year };
 	}
 
 
 	render() {
-		let {calendar} = this.state;
-		console.log(calendar);
-		let max = this.props.dates[getMaxDict(this.props.dates)];
-
-		if (calendar.length === 0) {
-			return (
-				<div className="stats-wrapper">
-					Processing scores...
-				</div>
-			);
-		}
-
+		let { calendar } = this.state;
 		return (
-			<>
-				<div>
-					<p>FUCK OFF</p>
-					<table className='calendar'>
-						<tr>
-							<th>Months</th>
-						</tr>
-						<tbody>
-							{calendar.map((weekday) => {
-								return (<tr>
-									{weekday.map((day) => {
-									let gValue = Math.floor((day/max)*255)
-									let style = {backgroundColor: "#00"+gValue.toString(16)+"00"};
-									return (<td style={style}> </td>)
-									})}
-								</tr>)
-							})}
-						</tbody>
-					</table>
+			<div className = "heatmap-wrapper">
+				<div className = "heatmap-header">
+					<p className = "heatmap-header-title">Heatmap</p>
+					<div className = "heatmap-legend">
+						<p className = "heatmap-legend-num">0</p>
+						<div className = "heatmap-legend-colors"></div>
+						<p className = "heatmap-legend-num">{this.props.maxDay}</p>
+					</div>
 				</div>
-			</>
+				<div className = "heatmap">
+					{calendar.map((month) => {
+						return (<div className = "heatmap-month">
+							{month.map((day) => {
+								let squareColor = { "background": 
+									`rgb(
+										${255 * (day / this.props.maxDay) + 220 * (1 - (day / this.props.maxDay))}, 
+										${28 * (day / this.props.maxDay) + 220 * (1 - (day / this.props.maxDay))}, 
+										${102 * (day / this.props.maxDay) + 220 * (1 - (day / this.props.maxDay))})` 
+								}
+								return (<div className="heatmap-square" style={squareColor}> </div>)
+							})}
+						</div>)
+					})}
+				</div>
+			</div>
 		)
 	}
 }

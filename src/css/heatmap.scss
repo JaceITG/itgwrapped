@@ -1,0 +1,58 @@
+@use './color.scss' as color;
+@use './fonts.scss' as font;
+@use './util.scss' as util;
+
+.heatmap {
+	display: grid;
+	grid-template-columns: 15% 15% 15% 15%;
+	column-gap: 70px;
+	row-gap: 35px;
+	margin: 0 auto;
+	align-content: center;
+	justify-content: center;
+	transform: translate(-20px, 0px);
+
+	&-month {
+		display: grid;
+		grid-template-columns: repeat(7, 20px);
+		grid-template-rows: repeat(5, 20px);
+		column-gap: 5px;
+		row-gap: 5px;
+	}
+	&-square {
+		padding: 10px 10px;
+		border: 1px solid color.$lite-grey;
+	}
+
+	// Help
+	&-wrapper {
+		@include util.flex($dir: column, $x-align: center, $gap: 20px);
+	}
+
+	&-header {
+		@include util.flex($dir: row, $x-align: center, $gap: 150px);
+		
+		&-title {
+			margin: 0 auto;
+			font-size: 3em;
+			font-weight: 700;
+			transform: skew(-10deg, 0deg);
+		}
+	}
+
+	&-legend {
+		@include util.flex($dir: row, $x-align: center, $gap: 20px);
+		transform: translate(0px, 15px);
+
+		&-colors {
+			background: linear-gradient(90deg, rgb(220, 220, 220) 0%, rgb(255, 28, 102) 75%);
+			padding-left: 150px;
+			padding-top: 25px;
+		}
+
+		&-num {
+			font-size: 1em;
+			font-weight: 500;
+		}
+	}
+}

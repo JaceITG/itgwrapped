@@ -6,6 +6,7 @@
 @use './util.scss' as util;
 
 @use './stats.scss';
+@use './heatmap.scss';
 
 html {
 	scroll-behavior: smooth;
