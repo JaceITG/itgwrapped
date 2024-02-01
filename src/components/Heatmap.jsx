@@ -49,7 +49,7 @@ class Heatmap extends React.Component {
 					<div className = "heatmap-legend">
 						<p className = "heatmap-legend-num">0</p>
 						<div className = "heatmap-legend-colors"></div>
-						<p className = "heatmap-legend-num">{this.props.maxDay}</p>
+						<p className = "heatmap-legend-num">{this.props.maxDay} scores</p>
 					</div>
 				</div>
 				<div className = "heatmap">
