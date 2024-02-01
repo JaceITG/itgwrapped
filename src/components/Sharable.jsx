@@ -52,8 +52,8 @@ const Sharable = (props) => {
 
                     <div className="stats-modal-item">Made Disco Pop<p className="value">{profile.discoPop} times</p></div>
                 <div className="stats-modal-item">Longest Session<p className="value">{dateFormat.format(Date.parse(biggestDay))}</p>{profile.daysPlayed[biggestDay]} scores</div>
-                    <div className="stats-modal-item">Favorite Pack<p className="value">{mostPlayedPack}</p>{profile.packPlays[mostPlayedPack]} scores</div>
-                    <div className="stats-modal-item">Favorite Song<p className="value">{mostPlayedSong}</p>{profile.songPlays[mostPlayedSong]} scores</div>
+                    <div className="stats-modal-item">Favorite Pack<p className="stats-modal-item-value">{mostPlayedPack}</p>{profile.packPlays[mostPlayedPack]} scores</div>
+                    <div className="stats-modal-item">Favorite Song<p className="stats-modal-item-value">{mostPlayedSong}</p>{profile.songPlays[mostPlayedSong]} scores</div>
                     <div className="stats-modal-grades">
                         <div className="value">
                             <img className="stats-modal-stars" src={quadIcon} />

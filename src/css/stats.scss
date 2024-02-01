@@ -120,15 +120,25 @@
 		align-self: flex-start;
 
 		// ~~Stolen~~ Borrowed from metrics-item-r
-		font-size: 1.2em;
+		font-size: 1em;
 		font-weight: 400;
 		width: 100%;
-		height: 6.5em;
+		height: 8em;
 		background-image: linear-gradient(110deg, color.$accent-p 50%, color.$accent-p-alt2 90%);
 		padding: 20px 10% 20px 20px;
 		border-radius: 5px;
 		filter:
 			drop-shadow(-3px 0px color.$dark2) drop-shadow(3px 0px color.$dark2) drop-shadow(0px 3px color.$dark2) drop-shadow(0px -3px color.$dark2);
+
+		&-value {
+				font-size: 2em;
+				transform: skew(-5deg, 0deg);
+				line-height: 1em;
+				max-height: 2em;
+				text-overflow: ellipsis;
+				word-wrap: break-word;
+				overflow: hidden;
+			}
 
 		&-flavor {
 			text-align: right;
@@ -168,6 +178,8 @@
 
 	.heatmap-wrapper {
 		@include util.flex($dir: column, $wrap: wrap, $x-align: center, $gap: 20px);
+
+		padding-top: 1em;
 	}
 
 }
