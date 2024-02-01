@@ -150,7 +150,7 @@
 
 	// DANGER: VERY VERY BAD DO NOT TOUCH I REPEAT THIS SUCKS
 	&-grades {
-		@include util.flex($dir: row, $wrap: wrap, $gap: 50px);
+		@include util.flex($dir: row, $wrap: wrap, $gap: 60px);
 		row-gap: 0px;
 		
 		&-container {
