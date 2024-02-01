@@ -36,14 +36,14 @@ const Sharable = (props) => {
                             <a>
                                 {
                                     profile.grades["1"].map((score, index) =>
-                                        index < 5 &&
+                                        index < 4 &&
                                         <div>
                                             <img className="stars" src={quadIcon} />
                                             <b>  {getSongName(score)}</b>
                                         </div>
                                     )}
 
-                                {profile.grades["1"].length >= 5 &&
+                                {profile.grades["1"].length >= 4 &&
                                     <p>...and more!</p>
                                 }
                             </a>
