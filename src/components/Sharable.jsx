@@ -55,21 +55,21 @@ const Sharable = (props) => {
                     <div className="stats-modal-item">Favorite Pack<p className="stats-modal-item-value">{mostPlayedPack}</p>{profile.packPlays[mostPlayedPack]} scores</div>
                     <div className="stats-modal-item">Favorite Song<p className="stats-modal-item-value">{mostPlayedSong}</p>{profile.songPlays[mostPlayedSong]} scores</div>
                     <div className="stats-modal-grades">
-                        <div className="value">
+                        <div className="stats-modal-grades-container">
                             <img className="stats-modal-stars" src={quadIcon} />
-                            <p>{("1" in profile.grades) && profile.grades["1"].length || 0}</p>
+                            <a>{("1" in profile.grades) && profile.grades["1"].length || 0}</a>
                         </div>
-                        <div className="value">
+                        <div className="stats-modal-grades-container">
                             <img className="stats-modal-stars" src={triIcon} />
-                            <p>{("2" in profile.grades) && profile.grades["2"].length || 0}</p>
+                            <a>{("2" in profile.grades) && profile.grades["2"].length || 0}</a>
                         </div>
-                        <div className="value">
+                        <div className="stats-modal-grades-container">
                             <img className="stats-modal-stars" src={dubIcon} />
-                            <p>{("3" in profile.grades) && profile.grades["3"].length || 0}</p>
+                            <a>{("3" in profile.grades) && profile.grades["3"].length || 0}</a>
                         </div>
-                        <div className="value">
+                        <div className="stats-modal-grades-container">
                             <img className="stats-modal-stars" src={starIcon} />
-                            <p>{("4" in profile.grades) && profile.grades["4"].length || 0}</p>
+                            <a>{("4" in profile.grades) && profile.grades["4"].length || 0}</a>
                         </div>
                     </div>
                 </div>

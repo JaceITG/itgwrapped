@@ -113,6 +113,7 @@
 		grid-template-columns: 33% 33% 33%;
 		column-gap: 20px;
 		row-gap: 20px;
+		padding-right: 1.3em;
 	}
 
 	&-item {
@@ -147,33 +148,36 @@
 		}
 	}
 
+	// DANGER: VERY VERY BAD DO NOT TOUCH I REPEAT THIS SUCKS
 	&-grades {
-		width: auto;
-		height: auto;
-		display: grid;
-		grid-template-columns: 50% 50%;
-		justify-content: center;
-		column-gap: 80px;
-		row-gap: 30px;
-		place-self: center;
-		align-items: stretch;
-		place-content: center;
+		@include util.flex($dir: row, $wrap: wrap, $gap: 50px);
+		row-gap: 0px;
+		
+		&-container {
+			height: 50px;
+			flex-basis: 100px;
 
-		&-grades-value {
-			font-size: 1.8em;
-			font-weight: 600;
-			transform: skew(-5deg, 0deg);
-			margin: 0 auto;
-			place-self: center;
+			img {
+				display: block;
+				position: relative;
+				top: 20%;
+				left: -30%;
+			}
+
+			a {
+				position: relative;
+				align-self: center;
+				top: -80%;
+				left: 60%;
+				width: fit-content;
+				font-weight: bold;
+			}
 		}
 	}
-
+	
 	&-stars {
-		width: 2em;
-		position: absolute;
-		place-self: center;
+		position: relative;
 		opacity: 0.5;
-		margin: 0 auto;
 	}
 
 	.heatmap-wrapper {
