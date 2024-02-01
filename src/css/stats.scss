@@ -92,12 +92,21 @@
 	// z-index: -999;
 
 	margin: 0 auto;
-	width: 80%;
+	height: 70%;
 
 	border: 1px solid color.$accent-p;
 	border-radius: 5px;
 	padding: 50px;
 	background-color: color.$dark;
+
+	&-logo {
+		@include util.flex($dir: column, $x-align: center, $gap: 100px);
+
+		img {
+			width: 50%;
+			padding-bottom: 20px;
+		}
+	}
 
 	&-grid {
 		display: grid;

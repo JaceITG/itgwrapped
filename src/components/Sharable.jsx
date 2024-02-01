@@ -23,13 +23,16 @@ const Sharable = (props) => {
 
     return (
             <div className="stats-modal">
+                <div className="stats-modal-logo">
+                    <img src="./itgwrapped.png" />
+                </div>
                 <div className="stats-modal-grid">
-                    <div className="stats-modal-item">You set <p className="value">{profile.numScores.toLocaleString()}</p> total scores!</div>
-                    <div className="stats-modal-item">You stepped on <p className="value">{profile.notesHit.toLocaleString()}</p> notes!</div>
-                    <div className="stats-modal-item">...but you also hit <p className="value">{profile.minesHit.toLocaleString()}</p> mines...</div>
+                    <div className="stats-modal-item">Ended 2023 with <p className="value">{profile.numScores.toLocaleString()}</p> scores</div>
+                    <div className="stats-modal-item">Stepped on <p className="value">{profile.notesHit.toLocaleString()}</p> notes</div>
+                    <div className="stats-modal-item">Blew up <p className="value">{profile.minesHit.toLocaleString()}</p> mines</div>
 
                     {profile.grades && ("1" in profile.grades) &&
-                        <div className="stats-modal-item">You got {profile.grades["1"].length || 0} quads!
+                    <div className="stats-modal-item">{profile.grades["1"].length || 0} Quad{profile.grades["1"].length>1 ? 's': ''}
                             <a>
                                 {
                                     profile.grades["1"].map((score, index) =>
@@ -47,10 +50,10 @@ const Sharable = (props) => {
                         </div>
                     }
 
-                    <div className="stats-modal-item">You played Disco Pop <p className="value">{profile.discoPop}</p> times!</div>
-                    <div className="stats-modal-item">Your biggest day was <p className="value">{dateFormat.format(Date.parse(biggestDay))}</p> where you set {profile.daysPlayed[biggestDay]} scores!</div>
-                    <div className="stats-modal-item">Your favorite pack was <p className="value">{mostPlayedPack}</p> with {profile.packPlays[mostPlayedPack]} scores set!</div>
-                    <div className="stats-modal-item">And your favorite song was <p className="value">{mostPlayedSong}</p> which you played {profile.songPlays[mostPlayedSong]} times!</div>
+                    <div className="stats-modal-item">Made Disco Pop<p className="value">{profile.discoPop} times</p></div>
+                <div className="stats-modal-item">Longest Session<p className="value">{dateFormat.format(Date.parse(biggestDay))}</p>{profile.daysPlayed[biggestDay]} scores</div>
+                    <div className="stats-modal-item">Favorite Pack<p className="value">{mostPlayedPack}</p>{profile.packPlays[mostPlayedPack]} scores</div>
+                    <div className="stats-modal-item">Favorite Song<p className="value">{mostPlayedSong}</p>{profile.songPlays[mostPlayedSong]} scores</div>
                     <div className="stats-modal-grades">
                         <div className="value">
                             <img className="stats-modal-stars" src={quadIcon} />
