@@ -4,6 +4,10 @@ import triIcon from '../assets/tri.svg';
 import dubIcon from '../assets/dub.svg';
 import starIcon from '../assets/star.svg';
 
+import noteIcon from '../assets/note.png';
+import mineIcon from '../assets/mine.png';
+import discoIcon from '../assets/discopop.png';
+
 import xmlJs from 'xml-js';
 import html2canvas from 'html2canvas';
 import { newProfile, processScore, getMaxDict, getSongName } from './wrapCalc.jsx';
@@ -136,8 +140,12 @@ class XmlParser extends React.Component {
                 </div>
                 <ul className="stats-list metrics">
                     <li>...set <p className="value">{profile.numScores.toLocaleString()}</p> total scores!</li>
-                    <li>...stepped on <p className="value">{profile.notesHit.toLocaleString()}</p> notes</li>
-                    <li>...but also on <p className="value">{profile.minesHit.toLocaleString()}</p> mines...</li>
+                    <li>...stepped on <p className="value">{profile.notesHit.toLocaleString()}</p> notes
+                        <img className="stat-icon" src={noteIcon} />
+                    </li>
+                    <li>...but also on <p className="value">{profile.minesHit.toLocaleString()}</p> mines...
+                        <img className="stat-icon" src={mineIcon} />
+                    </li>
                     
                     { profile.grades && ("1" in profile.grades) &&
                         <li>...got {profile.grades["1"].length || 0} quads!
@@ -155,10 +163,13 @@ class XmlParser extends React.Component {
                                     <p>...and more!</p>
                                 }
                             </a>
+                            <img className="stat-icon" src={quadIcon} />
                         </li>
                     }
 
-                    <li>...played Disco Pop <p className="value">{profile.discoPop}</p> times!</li>
+                    <li>...played Disco Pop <p className="value">{profile.discoPop}</p> times!
+                        <img className='stat-icon' src={discoIcon} />
+                    </li>
                     <li>Biggest Day: <p className="value">{dateFormat.format(Date.parse(biggestDay))}</p> with {profile.daysPlayed[biggestDay]} scores set!</li>
                     <li>Favorite Pack: <p className="value">{mostPlayedPack}</p> with {profile.packPlays[mostPlayedPack]} scores set!</li>
                     <li>Favorite Song: <p className="value">{mostPlayedSong}</p> with {profile.songPlays[mostPlayedSong]} scores set!</li>
