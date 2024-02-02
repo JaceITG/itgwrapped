@@ -22,11 +22,13 @@
 		font-size: 4em;
 		font-weight: 700;
 		filter: drop-shadow(7px 7px 0px color.$dark2);
+		padding: 0.5em;
 	}
 
 	&-b {
 		font-size: 2em;
 		font-weight: 600;
+		padding-bottom: 0.5em;
 	}
 }
 
