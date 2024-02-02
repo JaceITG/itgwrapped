@@ -17,36 +17,18 @@ html {
 
 .title-screen {
 	height: 100vh;
-	@include util.flex($dir: column, $x-align: center, $gap: 100px);
+	@include util.flex($dir: column, $x-align: center, $gap: 70px);
 	margin: 0 auto;
 
 	&-text-wrapper {
 		@include util.flex($dir: column);
 	}
 
+	&-logo {
+		height: 300px;
+	}
+
 	&-text {
-		&-a {
-			font-size: 5em;
-			font-weight: 700;
-			transform: skew(-15deg, 0deg);
-			align-self: center;
-		}
-
-		&-b {
-			font-size: 6em;
-			font-weight: 700;
-			transform: skew(-15deg, 0deg) translate(0px, -40px);
-			background-image: linear-gradient(30deg, color.$accent-r 0%, color.$accent-p 80%);
-			background-clip: text;
-			background-size: 100%;
-			-webkit-background-clip: text;
-			-moz-background-clip: text;
-			-webkit-text-fill-color: transparent; 
-			-moz-text-fill-color: transparent;
-
-			filter: drop-shadow(10px 10px 0px color.$dark2);
-		}
-
 		&-sub {
 			font-size: 1em;
 			font-weight: 500;

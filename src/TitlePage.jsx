@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react'
 import XmlParser from './components/xmlParser';
 import StatsGuide from './components/StatsGuide';
 import Dropzone from 'react-dropzone';
+import Logo from './assets/logo.svg?react';
 
 function App() {
   const [file, setFile] = useState(0);
@@ -26,9 +27,8 @@ function App() {
       {file === 0 ?
         <div className="title-screen">
           <div className="title-screen-text-wrapper">
-            <p className="title-screen-text-a">ITG</p>
-            <p className="title-screen-text-b">Wrapped</p>
-            <p className="title-screen-text-sub">Made by <a className="title-screen-text-link" href="https://github.com/JaceITG">JaceITG</a> and <a className="title-screen-text-link" href="https://github.com/soraeee">Sorae</a>
+            <Logo className='title-screen-logo' />
+            <p className="title-screen-text-sub">Made by <a className="title-screen-text-link" href="https://github.com/JaceITG">JaceITG</a> and <a className="title-screen-text-link" href="https://github.com/soraeee">sorae</a>
             </p>
           </div>
           <Dropzone  onDrop={acceptedFiles => handleChange(acceptedFiles)}>
@@ -42,7 +42,7 @@ function App() {
             )}
           </Dropzone>
           <StatsGuide className="info-box" />
-          <div className="info-box">
+          <div>
             <a className="info-box-text">To combine scores set across ITG and FA+ gamemodes, try out </a>
             <a className="info-box-text-link" href="https://mergestats.itgmania.com/">Teejusb's Stats Merger</a>
           </div>

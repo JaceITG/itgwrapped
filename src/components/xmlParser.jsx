@@ -1,12 +1,17 @@
 import React from 'react';
-import quadIcon from '../assets/quad.svg';
-import triIcon from '../assets/tri.svg';
-import dubIcon from '../assets/dub.svg';
-import starIcon from '../assets/star.svg';
+import quadIcon from '../assets/4stars.svg';
+import triIcon from '../assets/3stars.svg';
+import dubIcon from '../assets/2stars.svg';
+import starIcon from '../assets/1stars.svg';
 
-import noteIcon from '../assets/itgarrow.svg';
-import mineIcon from '../assets/mine.png';
+import arrowIcon from '../assets/itgarrow.svg';
+import mineIcon from '../assets/mine.svg';
 import discoIcon from '../assets/7discopop.svg';
+import calendarIcon from '../assets/calendar.svg';
+import folderIcon from '../assets/folder.svg';
+import noteIcon from '../assets/musicnote.svg';
+import padIcon from '../assets/pad.svg';
+import quadStarIcon from '../assets/quadstar.svg';
 
 import xmlJs from 'xml-js';
 import html2canvas from 'html2canvas';
@@ -146,9 +151,11 @@ class XmlParser extends React.Component {
                     <p className="stats-title-b">In 2023, you...</p>
                 </div>
                 <ul className="stats-list metrics">
-                    <li>...set <p className="value">{profile.numScores.toLocaleString()}</p> total scores!</li>
+                    <li>...set <p className="value">{profile.numScores.toLocaleString()}</p> total scores!
+                        <img className="stat-icon" src={padIcon} />
+                    </li>
                     <li>...stepped on <p className="value">{profile.notesHit.toLocaleString()}</p> notes
-                        <img className="stat-icon" src={noteIcon} />
+                        <img className="stat-icon" src={arrowIcon} />
                     </li>
                     <li>...but also on <p className="value">{profile.minesHit.toLocaleString()}</p> mines...
                         <img className="stat-icon" src={mineIcon} />
@@ -170,35 +177,42 @@ class XmlParser extends React.Component {
                                     <p>...and more!</p>
                                 }
                             </a>
-                            <img className="stat-icon" src={quadIcon} />
+                            <img className="stat-icon" src={quadStarIcon} />
                         </li>
                     }
 
                     <li>...played Disco Pop <p className="value">{profile.discoPop}</p> times!
                         <img className='stat-icon' src={discoIcon} />
                     </li>
-                    <li>Biggest Day: <p className="value">{dateFormat.format(Date.parse(biggestDay))}</p> with {profile.daysPlayed[biggestDay]} scores set!</li>
-                    <li>Favorite Pack: <p className="value">{mostPlayedPack}</p> with {profile.packPlays[mostPlayedPack]} scores set!</li>
-                    <li>Favorite Song: <p className="value">{mostPlayedSong}</p> with {profile.songPlays[mostPlayedSong]} scores set!</li>
-                    <li>
-                        <p className="value">
-                            <img className="stars" src={quadIcon} /> 
-                             {("1" in profile.grades) && profile.grades["1"].length || 0}
-                        </p>
-                        <p className="value">
-                            <img className="stars" src={triIcon} /> 
-                             {("2" in profile.grades) && profile.grades["2"].length || 0}
-                        </p>
-                        <p className="value">
-                            <img className="stars" src={dubIcon} /> 
-                            {("3" in profile.grades) && profile.grades["3"].length || 0}
-                        </p>
-                        <p className="value">
-                            <img className="stars" src={starIcon} /> 
-                             {("4" in profile.grades) && profile.grades["4"].length || 0}
-                        </p>
+                    <li>Biggest Day: <p className="value">{dateFormat.format(Date.parse(biggestDay))}</p> with {profile.daysPlayed[biggestDay]} scores set!
+                        <img className="stat-icon" src={calendarIcon} />
+                    </li>
+                    <li>Favorite Pack: <p className="value">{mostPlayedPack}</p> with {profile.packPlays[mostPlayedPack]} scores set!
+                        <img className="stat-icon" src={folderIcon} />
+                    </li>
+                    <li>Favorite Song: <p className="value">{mostPlayedSong}</p> with {profile.songPlays[mostPlayedSong]} scores set!
+                        <img className="stat-icon" src={noteIcon} />
                     </li>
                 </ul>
+				<p className = "heatmap-header-title">Total Stars</p>
+                <div className = "stats-stars">
+                    <p className="value">
+                        <img className="stars" src={quadIcon} /> 
+                         {("1" in profile.grades) && profile.grades["1"].length || 0}
+                    </p>
+                    <p className="value">
+                        <img className="stars" src={triIcon} /> 
+                         {("2" in profile.grades) && profile.grades["2"].length || 0}
+                    </p>
+                    <p className="value">
+                        <img className="stars" src={dubIcon} /> 
+                        {("3" in profile.grades) && profile.grades["3"].length || 0}
+                    </p>
+                    <p className="value">
+                        <img className="stars" src={starIcon} /> 
+                         {("4" in profile.grades) && profile.grades["4"].length || 0}
+                    </p>
+                </div>
                 <Heatmap dates = {profile.daysPlayed} maxDay = {profile.daysPlayed[biggestDay]} />
 
                 <Popup 
