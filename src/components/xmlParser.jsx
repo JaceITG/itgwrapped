@@ -4,9 +4,9 @@ import triIcon from '../assets/tri.svg';
 import dubIcon from '../assets/dub.svg';
 import starIcon from '../assets/star.svg';
 
-import noteIcon from '../assets/note.png';
+import noteIcon from '../assets/itgarrow.svg';
 import mineIcon from '../assets/mine.png';
-import discoIcon from '../assets/discopop.png';
+import discoIcon from '../assets/7discopop.svg';
 
 import xmlJs from 'xml-js';
 import html2canvas from 'html2canvas';
