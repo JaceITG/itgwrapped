@@ -21,7 +21,7 @@ html {
 	margin: 0 auto;
 
 	&-text-wrapper {
-		@include util.flex($dir: column, $x-align: center);
+		@include util.flex($dir: column);
 	}
 
 	&-text {
@@ -29,6 +29,7 @@ html {
 			font-size: 5em;
 			font-weight: 700;
 			transform: skew(-15deg, 0deg);
+			align-self: center;
 		}
 
 		&-b {
@@ -46,8 +47,21 @@ html {
 			filter: drop-shadow(10px 10px 0px color.$dark2);
 		}
 
+		&-sub {
+			font-size: 1em;
+			font-weight: 500;
+			transform: skew(-15deg, 0deg);
+			align-self: flex-end;
+		}
+
+		&-link {
+			color: color.$accent-p;
+		}
+
 		&-info {
 			font-weight: 400;
+			width: 100%;
+			align-content: flex-end;
 		}
 
 	}

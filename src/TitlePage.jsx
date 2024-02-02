@@ -28,6 +28,8 @@ function App() {
           <div className="title-screen-text-wrapper">
             <p className="title-screen-text-a">ITG</p>
             <p className="title-screen-text-b">Wrapped</p>
+            <p className="title-screen-text-sub">Made by <a className="title-screen-text-link" href="https://github.com/JaceITG">JaceITG</a> and <a className="title-screen-text-link" href="https://github.com/soraeee">Sorae</a>
+            </p>
           </div>
           <Dropzone  onDrop={acceptedFiles => handleChange(acceptedFiles)}>
             {({ getRootProps, getInputProps }) => (
