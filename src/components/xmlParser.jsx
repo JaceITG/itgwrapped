@@ -14,7 +14,7 @@ import Popup from 'reactjs-popup';
 
 import { newProfile, processScore, getMaxDict, getSongName } from './wrapCalc.jsx';
 import Heatmap from './Heatmap';
-import Sharable from './Sharable.jsx';
+import Shareable from './Shareable.jsx';
 
 const dateFormat = new Intl.DateTimeFormat("en", {
     month: "long",
@@ -34,10 +34,10 @@ class XmlParser extends React.Component {
 
     async handleShare() {
         html2canvas(document.getElementsByClassName('stats-modal')[0]).then( (canvas) => {
-            let img = canvas.toDataURL('sharable/png');
+            let img = canvas.toDataURL('Shareable/png');
             let node = document.createElement('img');
             node.src = img;
-            node.id = 'sharable-img';
+            node.id = 'Shareable-img';
             document.getElementById('share-modal').appendChild(node);
             console.log("Picture appended");
         });
@@ -214,8 +214,8 @@ class XmlParser extends React.Component {
                     }
                 </Popup>
                 <div className="page-end" />
-                
-                <Sharable profile={profile} mostPlayedPack={mostPlayedPack}
+
+                <Shareable profile={profile} mostPlayedPack={mostPlayedPack}
                     mostPlayedSong={mostPlayedSong} biggestDay={biggestDay}/>
             </div>
         );

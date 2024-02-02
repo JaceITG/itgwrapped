@@ -6,14 +6,14 @@ import triIcon from '../assets/tri.svg';
 import dubIcon from '../assets/dub.svg';
 import starIcon from '../assets/star.svg';
 import { getSongName } from './wrapCalc.jsx';
-import Heatmap from './Heatmap';
+import Heatmap from './Heatmap.jsx';
 
 const dateFormat = new Intl.DateTimeFormat("en", {
     month: "long",
     day: "numeric",
 });
 
-const Sharable = (props) => {
+const Shareable = (props) => {
 
     let profile = props.profile;
 
@@ -78,4 +78,4 @@ const Sharable = (props) => {
     );
 }
 
-export default Sharable;
+export default Shareable;
