@@ -12,6 +12,8 @@
 	justify-content: center;
 	transform: translate(-20px, 0px);
 
+	padding-bottom: 5em;
+
 	&-month {
 		display: grid;
 		grid-template-columns: repeat(7, 20px);
@@ -31,6 +33,8 @@
 
 	&-header {
 		@include util.flex($dir: row, $x-align: center, $gap: 150px);
+
+		padding-top: 3em;
 		
 		&-title {
 			margin: 0 auto;

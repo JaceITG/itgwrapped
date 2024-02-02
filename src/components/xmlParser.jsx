@@ -10,6 +10,8 @@ import discoIcon from '../assets/discopop.png';
 
 import xmlJs from 'xml-js';
 import html2canvas from 'html2canvas';
+import Popup from 'reactjs-popup';
+
 import { newProfile, processScore, getMaxDict, getSongName } from './wrapCalc.jsx';
 import Heatmap from './Heatmap';
 import Sharable from './Sharable.jsx';
@@ -32,7 +34,12 @@ class XmlParser extends React.Component {
 
     async handleShare() {
         html2canvas(document.getElementsByClassName('stats-modal')[0]).then( (canvas) => {
-            document.body.appendChild(canvas);
+            let img = canvas.toDataURL('sharable/png');
+            let node = document.createElement('img');
+            node.src = img;
+            node.id = 'sharable-img';
+            document.getElementById('share-modal').appendChild(node);
+            console.log("Picture appended");
         });
     }
 
@@ -193,7 +200,21 @@ class XmlParser extends React.Component {
                     </li>
                 </ul>
                 <Heatmap dates = {profile.daysPlayed} maxDay = {profile.daysPlayed[biggestDay]} />
-                <div className='info-box' onClick={() => this.handleShare()}><div className='info-box-text'>Share</div></div>
+
+                <Popup 
+                    trigger={<div className="info-box"><div className='info-box-text'>📷 Get Shareable Image</div></div>}
+                    onOpen={() => this.handleShare()}
+                    modal nested>
+                    {
+                        close => (
+                            <div id='share-modal' onClick=
+                                {() => close()}>
+                            </div>
+                        )
+                    }
+                </Popup>
+                <div className="page-end" />
+                
                 <Sharable profile={profile} mostPlayedPack={mostPlayedPack}
                     mostPlayedSong={mostPlayedSong} biggestDay={biggestDay}/>
             </div>

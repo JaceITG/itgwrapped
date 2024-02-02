@@ -103,15 +103,13 @@
 
 	// Hide Sharable modal behind content at the top of page
 	// WARNING: VERY FUNNY AND COOL TECH
-	// position: absolute;
-	// top: 0px;
-	// z-index: -999;
+	position: absolute;
+	top: 0px;
+	z-index: -999;
 
 	margin: 0 auto;
-	height: 70%;
 
 	border: 1px solid color.$accent-p;
-	border-radius: 5px;
 	padding: 50px;
 	background-color: color.$dark;
 
@@ -210,4 +208,32 @@
 		width: 10px;
 		height: 10px;
 	}
+}
+
+.popup-overlay {
+	backdrop-filter: blur(8px);
+}
+
+#share-modal {
+
+	border: 1px solid color.$lite;
+	border-radius: 5px;
+	padding: 30px 30px;
+	background-color: color.$dark;
+	
+	width: fit-content;
+
+	display: block;
+	margin: auto auto;
+
+	img {
+		display: block;
+		margin: auto auto;
+
+		width: 35em;
+	}
+}
+
+.page-end {
+	padding-bottom: 20em;
 }
