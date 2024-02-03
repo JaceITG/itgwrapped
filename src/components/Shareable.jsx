@@ -1,10 +1,10 @@
 import Popup from 'reactjs-popup';
 import React from 'react';
 
-import quadIcon from '../assets/4stars.svg';
-import triIcon from '../assets/3stars.svg';
-import dubIcon from '../assets/2stars.svg';
-import starIcon from '../assets/1stars.svg';
+import quadIcon from '../assets/4stars.png';
+import triIcon from '../assets/3stars.png';
+import dubIcon from '../assets/2stars.png';
+import starIcon from '../assets/1stars.png';
 import { getSongName } from './wrapCalc.jsx';
 import Heatmap from './Heatmap.jsx';
 
