@@ -2,9 +2,44 @@
 @use './fonts.scss' as font;
 @use './util.scss' as util;
 
+@keyframes spin {
+	100% {
+		-webkit-transform: rotateZ(360deg);
+		transform: rotateZ(360deg);
+	}
+}
+
+.loading {
+	@include util.flex($dir: column, $x-align: center, $align: center, $gap: 0px);
+	margin: 0 auto;
+	padding: 25px 50px 25px 50px;
+	height: 100vh;
+
+	&-text {
+		font-weight: 600;
+		font-size: 1.4em;
+	}
+
+	&-arrow {
+		&-container {
+			@include util.flex($dir: row, $x-align: center, $align: center);
+			transform: translateY(-20px);
+			transform-style: preserve-3d;
+			position: absolute;
+		}
+		&-2 {
+			margin: 0 auto;
+			position: absolute;
+			width: 620px;
+			animation: spin 15s linear infinite;
+			opacity: 0.1;
+		}
+	}
+}
+
+
 .stats-stars {
 	@include util.flex($dir: row, $x-align: center, $gap: 20px);
-
 }
 
 .stats-wrapper {
@@ -76,12 +111,9 @@
 	text-overflow: ellipsis;
 	word-wrap: break-word;
 	overflow: hidden;
-	filter: 
-		drop-shadow(-3px 0px color.$dark2)
-		drop-shadow(3px 0px color.$dark2)
-		drop-shadow(0px 3px color.$dark2)
-		drop-shadow(0px -3px color.$dark2);
-	
+	filter:
+		drop-shadow(-3px 0px color.$dark2) drop-shadow(3px 0px color.$dark2) drop-shadow(0px 3px color.$dark2) drop-shadow(0px -3px color.$dark2);
+
 	// Stat icon formatting
 	.stat-icon {
 		opacity: 0.35;
@@ -154,14 +186,14 @@
 			drop-shadow(-3px 0px color.$dark2) drop-shadow(3px 0px color.$dark2) drop-shadow(0px 3px color.$dark2) drop-shadow(0px -3px color.$dark2);
 
 		&-value {
-				font-size: 2em;
-				transform: skew(-5deg, 0deg);
-				line-height: 1em;
-				max-height: 2em;
-				text-overflow: ellipsis;
-				word-wrap: break-word;
-				overflow: hidden;
-			}
+			font-size: 2em;
+			transform: skew(-5deg, 0deg);
+			line-height: 1em;
+			max-height: 2em;
+			text-overflow: ellipsis;
+			word-wrap: break-word;
+			overflow: hidden;
+		}
 
 		&-flavor {
 			text-align: right;
@@ -174,7 +206,7 @@
 	&-grades {
 		@include util.flex($dir: row, $wrap: wrap, $gap: 60px);
 		row-gap: 0px;
-		
+
 		&-container {
 			height: 50px;
 			flex-basis: 100px;
@@ -196,7 +228,7 @@
 			}
 		}
 	}
-	
+
 	&-stars {
 		position: relative;
 		opacity: 1;
@@ -228,7 +260,7 @@
 	border-radius: 5px;
 	padding: 30px 30px;
 	background-color: color.$dark;
-	
+
 	width: fit-content;
 
 	display: block;

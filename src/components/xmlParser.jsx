@@ -13,6 +13,8 @@ import noteIcon from '../assets/musicnote.svg';
 import padIcon from '../assets/pad.svg';
 import quadStarIcon from '../assets/quadstar.svg';
 
+import LoadingArrow from '../assets/arrow.svg?react';
+
 import xmlJs from 'xml-js';
 import html2canvas from 'html2canvas';
 import Popup from 'reactjs-popup';
@@ -130,8 +132,12 @@ class XmlParser extends React.Component {
 
         if (profile === undefined) {
             return(
-                <div className="stats-wrapper">
-                    Processing scores...
+                <div className="loading">
+                    <p className = "loading-text">Processing scores...</p>
+                    <div className = "loading-arrow-container">
+                        <LoadingArrow className = "loading-arrow-1" />
+                        <LoadingArrow className = "loading-arrow-2" />
+                    </div>
                 </div>
             );
         }
