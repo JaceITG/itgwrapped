@@ -1,8 +1,7 @@
-# React + Vite
+# ![Logo](src/assets/logo.svg)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ITG Wrapped is a fun way to interpret and share statistics about your ITG/Stepmania performance from the past year!
 
-Currently, two official plugins are available:
+This project was inspired by the intuitive, stylish analytics of applications like Spotify. We love numbers.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Visit the [ITG Wrapped](https://jaceitg.github.io/itgwrapped/) site to make yours now, or view a [demonstration](https://jaceitg.github.io/itgwrapped/#/demo) using my own Stats file if you don't have one!
