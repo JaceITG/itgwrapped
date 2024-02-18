@@ -56,7 +56,7 @@ function App() {
                 </div>
                 :
                 <div className="container">
-                    <XmlParser stats={file} subtitle={"DGEF24"} start={startDate} end={endDate} isYear={false} />
+                    <XmlParser stats={file} subtitle={"#DGEF24"} start={startDate} end={endDate} isYear={false} />
                 </div>
             }
         </>
