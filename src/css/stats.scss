@@ -20,6 +20,12 @@
 		font-size: 1.4em;
 	}
 
+	&-subtext {
+		font-weight: 300;
+		font-size: 1em;
+		padding-top: .5em;
+	}
+
 	&-arrow {
 		&-container {
 			@include util.flex($dir: row, $x-align: center, $align: center);

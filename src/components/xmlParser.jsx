@@ -146,6 +146,14 @@ class XmlParser extends React.Component {
                     </div>
                 </div>
             );
+        } else if (profile.numScores <= 0) {
+            return (
+                <div className="loading">
+                    <p className="loading-text">Uh oh! No scores within time range in this file!</p>
+                    <p className="loading-subtext">Check that you have selected the correct Stats.xml file.</p>
+                    <p className="loading-subtext">You may need to merge stats files if you play only on the FA+ gamemode.</p>
+                </div>
+            )
         }
 
         /*  Stat Features TODO:
