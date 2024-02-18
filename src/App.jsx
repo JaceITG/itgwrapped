@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 
 import TitlePage from "./TitlePage.jsx";
+import TitlePageDGEF from "./TitlePageDGEF.jsx";
 import XmlParser from './components/xmlParser'; 
 
 const router = createHashRouter([
@@ -19,6 +20,10 @@ const router = createHashRouter([
         path: "demo",
         element: <XmlParser stats="/itgwrapped/Stats.xml" />,
     },
+    {
+        path: "dgef24",
+        element: <TitlePageDGEF />,
+    }
 
 ]);
 

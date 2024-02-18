@@ -36,6 +36,9 @@ class XmlParser extends React.Component {
             profile: undefined,
         }
 
+        this.isYear = props.isYear;
+        this.subtitle = props.subtitle;
+
         this.readXML(props.stats, props.start, props.end);
     }
 
@@ -157,7 +160,7 @@ class XmlParser extends React.Component {
             <div className="stats-wrapper">
                 <div className="stats-title">
                     <p className="stats-title-a">Hey {profile.username}!</p>
-                    <p className="stats-title-b">In 2023, you...</p>
+                    <p className="stats-title-b">In {this.subtitle}, you...</p>
                 </div>
                 <ul className="stats-list metrics">
                     <li>...set <p className="value">{profile.numScores.toLocaleString()}</p> total scores!
@@ -222,8 +225,9 @@ class XmlParser extends React.Component {
                          {("4" in profile.grades) && profile.grades["4"].length || 0}
                     </p>
                 </div>
-                <Heatmap dates = {profile.daysPlayed} maxDay = {profile.daysPlayed[biggestDay]} />
-
+                { this.isYear &&
+                    <Heatmap dates = {profile.daysPlayed} maxDay = {profile.daysPlayed[biggestDay]} />
+                }
                 <Popup 
                     trigger={<div className="info-box"><div className='info-box-text'>📷 Get Shareable Image</div></div>}
                     onOpen={() => this.handleShare()}
@@ -239,7 +243,7 @@ class XmlParser extends React.Component {
                 <div className="page-end" />
 
                 <Shareable profile={profile} mostPlayedPack={mostPlayedPack}
-                    mostPlayedSong={mostPlayedSong} biggestDay={biggestDay}/>
+                    mostPlayedSong={mostPlayedSong} biggestDay={biggestDay} dgef={this.isYear}/>
             </div>
         );
     }

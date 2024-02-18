@@ -73,7 +73,9 @@ const Shareable = (props) => {
                         </div>
                     </div>
                 </div>
-                <Heatmap dates={profile.daysPlayed} maxDay={profile.daysPlayed[biggestDay]} />
+                { props.isYear &&
+                    <Heatmap dates={profile.daysPlayed} maxDay={profile.daysPlayed[biggestDay]} />
+                }
             </div>
     );
 }

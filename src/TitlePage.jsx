@@ -55,7 +55,7 @@ function App() {
         </div>
         :
         <div className="container">
-          <XmlParser stats={file} start={startDate} end={endDate} />
+          <XmlParser stats={file} subtitle={"2023"} start={startDate} end={endDate} isYear={true} />
         </div>
       }
     </>

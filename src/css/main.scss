@@ -36,6 +36,23 @@ html {
 			align-self: flex-end;
 		}
 
+		&-dgef {
+			font-size: 3em;
+			font-weight: 600;
+			align-self: center;
+			padding-bottom: .5em;
+
+			background-image: linear-gradient(30deg, color.$accent-p 0%, color.$lite 80%);
+			background-clip: text;
+			background-size: 100%;
+			-webkit-background-clip: text;
+			-moz-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			-moz-text-fill-color: transparent;
+
+			filter: drop-shadow(5px 5px 0px color.$dark2);
+		}
+
 		&-link {
 			color: color.$accent-p;
 		}
