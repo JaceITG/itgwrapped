@@ -36,7 +36,7 @@ class XmlParser extends React.Component {
             profile: undefined,
         }
 
-        this.readXML(props.stats);
+        this.readXML(props.stats, props.start, props.end);
     }
 
     async handleShare() {
@@ -50,7 +50,8 @@ class XmlParser extends React.Component {
         });
     }
 
-    async parseStats(obj, year = 2023) {
+    // Select scores set between a given start, end Date (inclusive)
+    async parseStats(obj, start, end) {
 
         // Collect profile username
         let profile = newProfile(obj["Stats"]["GeneralData"]["DisplayName"]["_text"]);
@@ -77,9 +78,11 @@ class XmlParser extends React.Component {
                 // Ignore doubles
                 if (difficulty["_attributes"]["StepsType"] != "dance-single") continue;
 
-                // Ignore charts last played before target year
-                let lastPlayedYear = parseInt(difficulty["HighScoreList"]["LastPlayed"]["_text"].split('-')[0]);
-                if (lastPlayedYear < year) continue;
+                // Ignore charts last played before target date range
+                let lastPlayedDate = new Date(difficulty["HighScoreList"]["LastPlayed"]["_text"]);
+                if (lastPlayedDate < start) {
+                    continue;
+                }
 
                 // Ignore charts with no High Scores
                 if (difficulty["HighScoreList"]["HighScore"] === undefined) continue;
@@ -98,8 +101,8 @@ class XmlParser extends React.Component {
                     let score = highScores[scoreIndex];
 
                     // Check score date
-                    let scoreYear = parseInt(score["DateTime"]["_text"].split('-')[0]);
-                    if (scoreYear != year) continue;
+                    let scoreDate = new Date(score["DateTime"]["_text"].split(' ')[0]);
+                    if ( !(scoreDate >= start && scoreDate <= end) ) continue;
 
                     // Preserve song name/diff for standalone score object
                     score.Song = { path: songName, difficulty: diffName }
@@ -112,14 +115,14 @@ class XmlParser extends React.Component {
         this.setState({ profile: profile });
     }
 
-    async readXML(path) {
+    async readXML(path, start, end) {
         await fetch(path)
             .then((response) => response.text())
             .then((xmlText) => {
                 const dataObj = xmlJs.xml2js(xmlText, { compact: true, spaces: 4 });
                 console.log("Done reading");
 
-                this.parseStats(dataObj);
+                this.parseStats(dataObj, start, end);
             })
             .catch((error) => {
                 console.error('Error fetching XML data:', error);
