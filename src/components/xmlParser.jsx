@@ -174,6 +174,10 @@ class XmlParser extends React.Component {
                     <li>...set <p className="value">{profile.numScores.toLocaleString()}</p> total scores!
                         <img className="stat-icon" src={padIcon} />
                     </li>
+                    { !this.isYear &&
+                        <li>...played on <p className='value'>{Object.keys(profile.daysPlayed).length} out of 29</p> days!
+                        </li>
+                    }
                     <li>...stepped on <p className="value">{profile.notesHit.toLocaleString()}</p> notes
                         <img className="stat-icon" src={arrowIcon} />
                     </li>
@@ -251,7 +255,7 @@ class XmlParser extends React.Component {
                 <div className="page-end" />
 
                 <Shareable profile={profile} mostPlayedPack={mostPlayedPack}
-                    mostPlayedSong={mostPlayedSong} biggestDay={biggestDay} dgef={this.isYear}/>
+                    mostPlayedSong={mostPlayedSong} biggestDay={biggestDay} isYear={this.isYear}/>
             </div>
         );
     }

@@ -16,6 +16,7 @@ const dateFormat = new Intl.DateTimeFormat("en", {
 const Shareable = (props) => {
 
     let profile = props.profile;
+    let isYear = props.isYear;
 
     let biggestDay = props.biggestDay;
     let mostPlayedPack = props.mostPlayedPack;
@@ -27,7 +28,11 @@ const Shareable = (props) => {
                     <img src="./itgwrapped.png" />
                 </div>
                 <div className="stats-modal-grid">
-                    <div className="stats-modal-item">Ended 2023 with <p className="value">{profile.numScores.toLocaleString()}</p> scores</div>
+                    <div className="stats-modal-item">Ended {isYear ? "2023" : "#DGEF24"} with <p className="value">{profile.numScores.toLocaleString()}</p> scores</div>
+                    {!isYear &&
+                        <div className="stats-modal-item">Played on <p className='value'>{Object.keys(profile.daysPlayed).length} out of 29</p> days!
+                        </div>
+                    }
                     <div className="stats-modal-item">Stepped on <p className="value">{profile.notesHit.toLocaleString()}</p> notes</div>
                     <div className="stats-modal-item">Blew up <p className="value">{profile.minesHit.toLocaleString()}</p> mines</div>
 
@@ -49,8 +54,9 @@ const Shareable = (props) => {
                             </a>
                         </div>
                     }
-
+                {isYear &&
                     <div className="stats-modal-item">Made Disco Pop<p className="value">{profile.discoPop} times</p></div>
+                }
                 <div className="stats-modal-item">Longest Session<p className="value">{dateFormat.format(Date.parse(biggestDay))}</p>{profile.daysPlayed[biggestDay]} scores</div>
                     <div className="stats-modal-item">Favorite Pack<p className="stats-modal-item-value">{mostPlayedPack}</p>{profile.packPlays[mostPlayedPack]} scores</div>
                     <div className="stats-modal-item">Favorite Song<p className="stats-modal-item-value">{mostPlayedSong}</p>{profile.songPlays[mostPlayedSong]} scores</div>
