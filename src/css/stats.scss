@@ -129,6 +129,18 @@
 		top: 0%;
 		right: 5%;
 	}
+
+	.song-name {
+		line-height: 1.2em;
+		
+		white-space: pre-line;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	
+		display: -webkit-box;
+		-webkit-line-clamp: 1;
+		-webkit-box-orient: vertical;
+	}
 }
 
 .stats-list li:nth-child(even) {
