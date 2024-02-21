@@ -43,8 +43,7 @@ const Shareable = (props) => {
                                     profile.grades["1"].map((score, index) =>
                                         index < 4 &&
                                         <div>
-                                            <img className="stars" src={quadIcon} />
-                                            <b>  {getSongName(score)}</b>
+                                                <div className="song-name"><img className="stars" src={quadIcon} />{getSongName(score)}</div>
                                         </div>
                                     )}
 
