@@ -175,9 +175,14 @@ class XmlParser extends React.Component {
                     <li>...set <p className="value">{profile.numScores.toLocaleString()}</p> total scores!
                         <img className="stat-icon" src={padIcon} />
                     </li>
-                    { !this.isYear &&
-                        <li>...played on <p className='value'>{Object.keys(profile.daysPlayed).length} out of 29</p> days!
-                            <img className='stat-icon' src={percentIcon}/>
+                    { !this.isYear && Object.keys(profile.daysPlayed).length > 0 &&
+                        <li className='has-confetti'>
+                            <div>...played on <p className='value'>{Object.keys(profile.daysPlayed).length} out of 29</p> days!
+                                {Object.keys(profile.daysPlayed).length >= 29 &&
+                                    <p>🎉 You played ITG every day this February! 🎉</p>
+                                }
+                                <img className='stat-icon' src={percentIcon}/>
+                            </div>
                         </li>
                     }
                     <li>...stepped on <p className="value">{profile.notesHit.toLocaleString()}</p> notes

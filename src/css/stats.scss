@@ -141,6 +141,10 @@
 		-webkit-line-clamp: 1;
 		-webkit-box-orient: vertical;
 	}
+
+	&.has-confetti {
+		background-image: url("../assets/confetti.svg"), linear-gradient(110deg, color.$accent-p-alt2 50%, color.$accent-p 90%);
+	}
 }
 
 .stats-list li:nth-child(even) {
@@ -153,6 +157,10 @@
 
 	.stat-icon {
 		left: 5%
+	}
+
+	&.has-confetti {
+		background-image: url("../assets/confetti.svg"), linear-gradient(110deg, color.$accent-p-alt2 50%, color.$accent-p 90%);
 	}
 }
 
@@ -201,9 +209,6 @@
 		padding: 20px 10% 20px 20px;
 		border-radius: 5px;
 
-		// white-space: nowrap;
-		// overflow: hidden;
-
 		filter:
 			drop-shadow(-3px 0px color.$dark2) drop-shadow(3px 0px color.$dark2) drop-shadow(0px 3px color.$dark2) drop-shadow(0px -3px color.$dark2);
 
@@ -223,6 +228,7 @@
 			font-weight: 300;
 		}
 
+
 		.song-name {
 			line-height: 1.2em;
 
@@ -234,6 +240,10 @@
 			-webkit-line-clamp: 1;
 			-webkit-box-orient: vertical;
 		}
+	}
+
+	.confetti {
+		background-image: url("../assets/confetti.svg"), linear-gradient(110deg, color.$accent-p 50%, color.$accent-p-alt2 90%);
 	}
 
 	// DANGER: VERY VERY BAD DO NOT TOUCH I REPEAT THIS SUCKS

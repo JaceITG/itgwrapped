@@ -30,7 +30,7 @@ const Shareable = (props) => {
                 <div className="stats-modal-grid">
                     <div className="stats-modal-item">Ended {isYear ? "2023" : "#DGEF24"} with <p className="value">{profile.numScores.toLocaleString()}</p> scores</div>
                     {!isYear &&
-                        <div className="stats-modal-item">Played on <p className='value'>{Object.keys(profile.daysPlayed).length} out of 29</p> days!
+                        <div className="stats-modal-item confetti">Played on <p className='value'>{Object.keys(profile.daysPlayed).length} out of 29</p> days!
                         </div>
                     }
                     <div className="stats-modal-item">Stepped on <p className="value">{profile.notesHit.toLocaleString()}</p> notes</div>
