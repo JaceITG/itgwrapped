@@ -6,6 +6,7 @@ import starIcon from '../assets/1stars.svg';
 
 import arrowIcon from '../assets/itgarrow.svg';
 import mineIcon from '../assets/mine.svg';
+import percentIcon from '../assets/percent.svg';
 import discoIcon from '../assets/7discopop.svg';
 import calendarIcon from '../assets/calendar.svg';
 import folderIcon from '../assets/folder.svg';
@@ -176,6 +177,7 @@ class XmlParser extends React.Component {
                     </li>
                     { !this.isYear &&
                         <li>...played on <p className='value'>{Object.keys(profile.daysPlayed).length} out of 29</p> days!
+                            <img className='stat-icon' src={percentIcon}/>
                         </li>
                     }
                     <li>...stepped on <p className="value">{profile.notesHit.toLocaleString()}</p> notes
