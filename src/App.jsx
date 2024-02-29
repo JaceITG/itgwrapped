@@ -18,7 +18,7 @@ const router = createHashRouter([
     },
     {
         path: "demo",
-        element: <XmlParser stats="/itgwrapped/Stats.xml" />,
+        element: <XmlParser stats="/itgwrapped/Stats.xml" subtitle={"2023"} start={new Date("2023-01-01T00:00:00")} end={new Date("2024-01-01T00:00:00")} isYear={true} />,
     },
     {
         path: "dgef24",
