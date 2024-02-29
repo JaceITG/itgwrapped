@@ -13,6 +13,7 @@ import folderIcon from '../assets/folder.svg';
 import noteIcon from '../assets/musicnote.svg';
 import padIcon from '../assets/pad.svg';
 import quadStarIcon from '../assets/quadstar.svg';
+import youTried from '../assets/youtried.png';
 
 import LoadingArrow from '../assets/arrow.svg?react';
 
@@ -181,7 +182,11 @@ class XmlParser extends React.Component {
                                 {Object.keys(profile.daysPlayed).length >= 29 &&
                                     <p>🎉 You played ITG every day this February! 🎉</p>
                                 }
-                                <img className='stat-icon' src={percentIcon}/>
+                                {Object.keys(profile.daysPlayed).length <= 10 ?
+                                    <img className='stat-icon' src={youTried}/>
+                                    :
+                                    <img className='stat-icon' src={percentIcon}/>
+                                }
                             </div>
                         </li>
                     }
