@@ -84,7 +84,7 @@ class XmlParser extends React.Component {
                 if (difficulty["_attributes"]["StepsType"] != "dance-single") continue;
 
                 // Ignore charts last played before target date range
-                let lastPlayedDate = new Date(difficulty["HighScoreList"]["LastPlayed"]["_text"]);
+                let lastPlayedDate = new Date(difficulty["HighScoreList"]["LastPlayed"]["_text"] + "00:00:00");
                 if (lastPlayedDate < start) {
                     continue;
                 }
@@ -106,8 +106,10 @@ class XmlParser extends React.Component {
                     let score = highScores[scoreIndex];
 
                     // Check score date
-                    let scoreDate = new Date(score["DateTime"]["_text"].split(' ')[0]);
-                    if ( !(scoreDate >= start && scoreDate <= end) ) continue;
+                    let scoreDate = new Date(score["DateTime"]["_text"]);
+                    if ( !(scoreDate >= start && scoreDate <= end) ) {
+                        continue;
+                    };
 
                     // Preserve song name/diff for standalone score object
                     score.Song = { path: songName, difficulty: diffName }
@@ -162,6 +164,8 @@ class XmlParser extends React.Component {
         *   -FEC, etc count
         *   -Score and/or date distribution graph
         */
+
+        console.log(profile.daysPlayed);
 
         let biggestDay = getMaxDict(profile.daysPlayed);
         let mostPlayedPack = getMaxDict(profile.packPlays);
